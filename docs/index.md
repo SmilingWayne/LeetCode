@@ -2,6 +2,8 @@
 
 For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
+这是一次新的提交！
+
 ## Commands
 
 * `mkdocs new [dir-name]` - Create a new project.
