@@ -46,4 +46,13 @@ extra:
     - icon: fontawesome/solid/paper-plane
       link: mailto:xiaoxiaowayne@163.com
 
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+extra_css:
+  - stylesheets/extra.css
+  - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
+
 copyright: Copyright &copy; 2022 - 2024 xiaoxiaoWayne
