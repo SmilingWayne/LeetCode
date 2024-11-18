@@ -8,8 +8,10 @@ nav:
       - 随机文本: Part1/File1.md
   - 第二部分:
       - Part2/index.md
-  - 第三部分:
-      - Part3/index.md
+  - 面试题:
+      - 回溯: Interview/Interview1.md
+  - 100题:
+      - 二叉树: Hot100/Bin_Tree.md
 docs_dir: docs/
 
 theme:
