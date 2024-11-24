@@ -12,6 +12,8 @@ nav:
       - 回溯: Interview/Interview1.md
   - 100题:
       - 二叉树: Hot100/Bin_Tree.md
+      - 双指针: Hot100/Two_Pointer.md
+      - 动态规划: Hot100/DP.md
 docs_dir: docs/
 
 theme:
