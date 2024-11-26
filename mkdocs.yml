@@ -53,7 +53,7 @@ extra:
       link: mailto:xiaoxiaowayne@163.com
 
 plugins:
-  - rss
+  - rss:
       date_from_meta:
         as_creation: "date" # means from page.meta.date
         as_update: "git" # means from git log
@@ -61,7 +61,7 @@ plugins:
         default_time: "09:30"
         default_timezone: Asia/Shanghai
       enabled: true
-      feed_description: "My custom feed description"  # MkDocs site_description: will be used if this key is not present
+      feed_description: "My custom feed description" # MkDocs site_description: will be used if this key is not present
       feeds_filenames:
         json_created: feed_json_created.json
         json_updated: feed_json_updated.json
