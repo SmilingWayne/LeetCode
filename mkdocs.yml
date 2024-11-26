@@ -1,5 +1,6 @@
-site_name: 我的仓库
+site_name: LeetCodebySmile
 site_url: https://smilingwayne.github.io/LeetCode/
+site_description: 笑笑的题库!
 
 nav:
   - 首页: index.md
@@ -8,6 +9,8 @@ nav:
       - 随机文本: Part1/File1.md
   - 第二部分:
       - Part2/index.md
+  - 第三部分:
+      - Part3/index.md
   - 面试题:
       - 回溯: Interview/Interview1.md
   - 100题:
@@ -18,6 +21,7 @@ docs_dir: docs/
 
 theme:
   name: material
+  custom_dir: docs/theme/overrides
   features:
     - navigation.tabs
     - search.suggest
@@ -47,6 +51,9 @@ extra:
       link: https://www.instagram.com/
     - icon: fontawesome/solid/paper-plane
       link: mailto:xiaoxiaowayne@163.com
+
+plugins:
+  - rss
 
 markdown_extensions:
   - admonition
