@@ -56,8 +56,8 @@ extra:
 plugins:
   - rss:
       date_from_meta:
-        as_creation: "git" # means from page.meta.date
-        as_update: "git" # means from git log
+        as_creation: "date" # means from page.meta.date
+        as_update: "date" # means from git log
         datetime_format: "%Y-%m-%d %H:%M"
         default_time: "09:30"
         default_timezone: Asia/Shanghai
