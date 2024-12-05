@@ -115,3 +115,56 @@ class Solution:
 ```
 
 !!! quote "思路要清楚：先排序，然后双指针。双指针写的时候有个小技巧。就是用一个for循环充当第一个指针，然后在遍历过程中用另外的变量记录另一个（或另外几个）变量的位置。这个问题因为不允许重复，所以必须要对相同的元素进行消重。消重的时候为了避免不知道怎么处理，可以每次都把指针自增/自减1，然后判断加了之后是否会和加了之前的重复。见6～7行，见16～17行。也就是，消重的时候尽量按照 `i != i - 1` 的思路来写。"
+
+----
+
+## [283. 移动0](https://leetcode.cn/problems/move-zeroes/description/?envType=study-plan-v2&envId=top-100-liked)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note "双指针的典型题"
+    <!-- 这里记载考察的数据结构、算法等 -->
+    - 🔑🔑 难度：<span style = "color:Green; font-weight:bold">Easy 简单</span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+
+> 示例1:
+> 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
+> 
+> 请注意 ，必须在不复制数组的情况下原地对数组进行操作。
+
+ 
+
+> 示例 1
+> 
+> 输入: `nums = [0,1,0,3,12]`
+> 输出: `[1,3,12,0,0]`
+> 
+> 示例 2:
+> 输入: `nums = [0]`
+> 
+> 输出: `[0]`
+ 
+
+```python
+class Solution:
+    def moveZeroes(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        left = right = 0
+        n = len(nums)
+        while right < n:
+            if nums[right] != 0:
+                nums[left] , nums[right]  = nums[right], nums[left] 
+                left += 1
+            right += 1
+
+```
+
+!!! quote "动得更快的是right，检测哪边是非0的，left是保证“在我之前的数字都是非0了”。"
