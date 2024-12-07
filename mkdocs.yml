@@ -20,6 +20,7 @@ nav:
       - 双指针: Hot100/Two_Pointer.md
       - 动态规划: Hot100/DP.md
       - 链表: Hot100/LinkList.md
+      - 回溯: Hot100/Backtrack.md
 docs_dir: docs/
 
 theme:
