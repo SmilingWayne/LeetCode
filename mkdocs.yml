@@ -15,9 +15,9 @@ nav:
       - Part3/NewHere.md
   - 面试题:
       - 回溯: Interview/Interview1.md
-  - 100题:
+  - 100题&面试150题:
       - 二叉树: Hot100/Bin_Tree.md
-      - 双指针: Hot100/Two_Pointer.md
+      - 双指针｜滑动窗口: Hot100/Two_Pointer_sliding_window.md
       - 动态规划: Hot100/DP.md
       - 链表: Hot100/LinkedList.md
       - 回溯: Hot100/Backtrack.md

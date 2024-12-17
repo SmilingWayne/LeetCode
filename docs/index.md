@@ -6,12 +6,9 @@ For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
 Check Again!
 
-## Commands
+## Introduction
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+这里是笑笑的刷题本！跳转链接维护中！可以通过上面的tab访问已有的内容。
 
 ## Project layout
 

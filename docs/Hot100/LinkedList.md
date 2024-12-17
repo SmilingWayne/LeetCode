@@ -203,3 +203,58 @@ class Solution:
 
 !!! quote "记忆：相遇的时候，慢的走了 `N`,快的走了`2 * N`。只需要此时从head开始继续走一个指针，就能在相交的地方再度相聚了。"
 
+----
+
+## [19. 删除链表的倒数第k个节点](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/?envType=study-plan-v2&envId=top-100-liked)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+
+> 示例1:
+> ![](https://assets.leetcode.com/uploads/2020/10/03/remove_ex1.jpg)
+>
+> 给你一个链表，删除链表的倒数第 `n` 个结点，并且返回链表的头结点。
+>
+> 
+
+
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+        result = ListNode(0)
+        result.next = head 
+        slow = head 
+        fast = head 
+        for i in range(n):
+            fast = fast.next
+            if fast == None:
+                break 
+        if fast == None:
+            return head.next 
+        
+        while fast.next != None:
+            fast = fast.next
+            slow = slow.next 
+        slow.next = slow.next.next 
+        return result.next
+```
+
+!!! quote "要注意，可能要删除的是第一个节点！所以分情况讨论，如果删除的是第一个节点，那么`head.next`，否则就利用快慢指针进行操作。"
+
+
+
