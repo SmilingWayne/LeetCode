@@ -36,3 +36,8 @@ Check Again!
     Curabitur feugiat, tortor non consequat
     finibus, justo purus auctor massa, nec
     semper lorem quam in massa.
+
+
+
+    \begin{supertabular}
+    {m{0.30\textwidth}m{0.2\textwidth}m{0.08\textwidth}m{0.08\textwidth}m{0.08\textwidth}m{0.08\textwidth}m{0.08\textwidth}}
