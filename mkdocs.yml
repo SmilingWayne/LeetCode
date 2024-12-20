@@ -5,9 +5,10 @@ site_description: 笑笑的题库!
 nav:
   - 首页: index.md
   - tags: tags.md
-  - 第一部分:
-      - Part1/index.md
-      - 随机文本: Part1/File1.md
+  - 日常:
+      - Daily/index.md
+      - 数组: Daily/Array.md
+      - 随机文本: Daily/File1.md
   - 第二部分:
       - Part2/index.md
   - 第三部分:
