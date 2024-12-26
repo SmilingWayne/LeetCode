@@ -22,6 +22,8 @@ nav:
       - 动态规划: Hot100/DP.md
       - 链表: Hot100/LinkedList.md
       - 回溯: Hot100/Backtrack.md
+      - 列表｜矩阵: Hot100/Array.md
+      - 栈｜队列: Hot100/Stack.md
       - 二分搜索: Hot100/Bin_search.md
 docs_dir: docs/
 
@@ -93,9 +95,14 @@ plugins:
 
 markdown_extensions:
   - admonition
+  - def_list
   - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
 
+extra_javascript:
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 extra_css:
   - stylesheets/extra.css
   - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css

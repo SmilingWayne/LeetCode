@@ -1,4 +1,4 @@
-# 数组
+# 数组与矩阵
 
 ## [轮转数组](https://leetcode.cn/problems/rotate-array/description/?envType=study-plan-v2&envId=top-100-liked)
 
@@ -173,4 +173,80 @@ class Solution:
 
 !!! quote "思路很重要：（1）如果数组长度是N，那么目标最大是 N+1，也就说1～N全部出现了；所以，我们可以每次交换一个在这个区间内的数字到它该有的位置上。到上面的方法可能会陷入死循环。如果 `nums[i]` 恰好与 `nums[x−1]` 相等，那么就会无限交换下去。此时我们有 `nums[i]=x=nums[x−1]`，说明 `x` 已经出现在了正确的位置。因此我们可以跳出循环，开始遍历下一个数。"
 
+
+----
+
+
+## [54. 螺旋矩阵](https://leetcode.cn/problems/spiral-matrix/description/?envType=study-plan-v2&envId=top-100-liked)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+
+> 示例1:
+> 给你一个 `m`行 `n` 列的矩阵 `matrix` ，请按照 顺时针螺旋顺序 ，返回矩阵中的所有元素。
+>
+> 输入：`matrix = [[1,2,3],[4,5,6],[7,8,9]]`
+> 
+> 输出：`[1,2,3,6,9,8,7,4,5]`
+
+
+```python
+class Solution:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        m = len(matrix)
+
+        if m == 0:
+            return []
+        n = len(matrix[0])
+
+        if m == 1 and n == 1:
+            return [matrix[0][0]]
+        elif m == 1:
+            return [matrix[0][i] for i in range(n)]
+        elif n == 1:
+            return [matrix[i][0] for i in range(m)]
+        l = 0
+        r = n
+        lb = 0
+        ub = m
+        result = []
+        for k in range(1):
+            for i in range(l, r - 1):
+                result.append(matrix[lb][i])
+            
+            for i in range(lb, ub - 1):
+                result.append(matrix[i][r - 1])
+            
+            for i in range(r - 1, l, - 1):
+                result.append(matrix[ub - 1][i])
+
+            for i in range(ub - 1, lb, - 1):
+                result.append(matrix[i][lb])
+            lb += 1
+            ub -= 1
+            l += 1
+            r -= 1
+        if len(result) == m * n:
+            return result
+        else:
+            newmat = [[0 for _ in range(n - 2)] for _ in range( m - 2)]
+            for i in range(1,  m - 1):
+                for j in range(1, n - 1):
+                    newmat[i - 1][j - 1] = matrix[i][j]
+
+            return result + self.spiralOrder(newmat)
+        
+```
+
+!!! quote "递归做法，注意，如果一次遍历就能完成，则不需要再次调用了。这里的一次遍历有两种情况：$1 \times n \lor n \times 1$,或者`2`行、或者 `2` 列"
 

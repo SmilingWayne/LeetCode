@@ -54,3 +54,50 @@ class Solution:
 ```
 
 !!! quote "重要的是dp的过程啊!!因为要返回所有的回文串.. DP的第一个for循环要从后到前面开始。因为从 `i` 到 `j` 的字串是回文，意味着 `s[i] == s[j]` 以及 `s[i + 1: j - 1]`的串是回文的"
+
+----
+
+## [46.全排列](https://leetcode.cn/problems/permutations/description/?envType=study-plan-v2&envId=top-100-liked)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+
+> 示例1:
+> 输入：`nums = [1,2,3]`
+> 
+> 输出：`[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]`
+
+> 
+
+hehh
+```python
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        result = []
+        def backtrack(cur, rest):
+
+            if len(cur) == len(nums):
+                result.append(cur)
+                return
+            for i in range(len(rest)):
+                tmp = copy.copy(cur)
+                cur.append(rest[i])
+                backtrack(cur, rest[:i] + rest[i + 1:])
+                cur = tmp
+
+        backtrack([], nums)
+        return result
+
+```
+
+!!! quote ""

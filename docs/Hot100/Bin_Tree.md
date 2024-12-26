@@ -1,6 +1,6 @@
 # 二叉树
 
-## 101 对称二叉树 
+## [101 对称二叉树 ](https://leetcode.cn/problems/symmetric-tree/description/?envType=study-plan-v2&envId=top-100-liked)
 
 <!-- 所有文件名必须是该题目的英文名 -->
 
@@ -191,3 +191,49 @@ class Solution:
 
 !!! quote ""
 
+
+----
+
+
+## [226. 翻转二叉树](https://leetcode.cn/problems/invert-binary-tree/description/?envType=study-plan-v2&envId=top-100-liked)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    - 🔑🔑 难度：<span style = "color:Green; font-weight:bold">Easy 简单</span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+
+> 示例1:
+> ![](https://assets.leetcode.com/uploads/2021/03/14/invert1-tree.jpg)
+>
+> 输入：`root = [4,2,7,1,3,6,9]`
+> 
+> 输出：`[4,7,2,9,6,3,1]`
+
+
+```python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if root == None:
+            return None
+        right = self.invertTree(root.right)
+        left = self.invertTree(root.left)
+        root.left = right
+        root.right = left
+        return root
+```
+
+!!! quote ""
