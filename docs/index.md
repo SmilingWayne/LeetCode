@@ -39,5 +39,3 @@ Check Again!
 
 
 
-    \begin{supertabular}
-    {m{0.30\textwidth}m{0.2\textwidth}m{0.08\textwidth}m{0.08\textwidth}m{0.08\textwidth}m{0.08\textwidth}m{0.08\textwidth}}

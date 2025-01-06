@@ -25,6 +25,7 @@ nav:
       - 列表｜矩阵: Hot100/Array.md
       - 栈｜队列: Hot100/Stack.md
       - 二分搜索: Hot100/Bin_search.md
+      - 贪心算法: Hot100/Greedy.md
 docs_dir: docs/
 
 theme:

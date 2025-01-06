@@ -97,3 +97,60 @@ class Solution:
     假设`nums[j], nums[i]`为当前子序列的最后两个元素，这样就确定了序列相邻元素模k的值，`dp[i][(nums[i] + nums[j]) % k] = dp[j][(nums[i] + nums[j]) % k] + 1`，`dp[i][m]`表示以`nums[i]`结尾且序列相邻元素模`k`值均为`m`的最长序列长度。
 
     > 上面遍历的第二个for循环，就是在检查以`j`作为倒数第二个数字时的子序列长度。
+
+----
+
+## [5. 最长回文子串🌟](https://leetcode.cn/problems/longest-palindromic-substring/description/?envType=study-plan-v2&envId=top-100-liked)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+
+> 示例1:
+> 
+> 给你一个字符串 s，找到 s 中最长的 回文子串。
+> 
+> 输入：s = "babad"
+> 
+> 输出："bab"
+> 
+> 解释："aba" 同样是符合题意的答案。
+> 
+
+
+
+```python
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        n = len(s)
+        if n < 2:
+            return s
+        max_len = 1
+        left = 0; right = 0
+        dp = [[False] * n for _ in range(n)]
+        for j in range(n):
+            for i in range(j, -1, -1):
+                if j - 1 > i:
+                    dp[i][j] = dp[i + 1][j - 1] and s[i] == s[j]
+                else:
+                    dp[i][j] = (s[i] == s[j])
+                
+                if dp[i][j] and j - i + 1 > max_len:
+                    left = i
+                    right = j 
+                    max_len = j - i + 1
+        return s[left: right + 1]
+
+```
+
+!!! quote "因为要返回字符串，所以必须找到一对上下标。同时，这个需要两层遍历，一个用来锚定“当前的最后一个字符所在位置”，一个找“前向的可能与这个字符串匹配并且中间夹着的部分都是回文”的“第一个字符”所在的位置。这里的dp表存储的是从 $i$ 到 $j$ 的字符串是否是回文串。"
+
