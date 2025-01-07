@@ -1,3 +1,8 @@
+---
+tags:
+  - 栈
+---
+
 # 栈
 
 ## [739. 每日温度](https://leetcode.cn/problems/daily-temperatures/?envType=study-plan-v2&envId=top-100-liked)

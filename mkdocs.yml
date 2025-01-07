@@ -4,19 +4,15 @@ site_description: 笑笑的题库!
 
 nav:
   - 首页: index.md
-  - tags: tags.md
   - 日常:
       - Daily/index.md
       - 数组: Daily/Array.md
-      - 随机文本: Daily/File1.md
   - 第二部分:
       - Part2/index.md
-  - 第三部分:
-      - Part3/index.md
-      - Part3/NewHere.md
   - 面试题:
       - 回溯: Interview/Interview1.md
   - 100题&面试150题:
+      - 综合与记不得的: Hot100/Appendix.md
       - 二叉树: Hot100/Bin_Tree.md
       - 双指针｜滑动窗口: Hot100/Two_Pointer_sliding_window.md
       - 动态规划: Hot100/DP.md
@@ -31,6 +27,8 @@ docs_dir: docs/
 theme:
   name: material
   custom_dir: docs/theme/overrides
+  palette:
+    primary: teal
   features:
     - navigation.tabs
     - search.suggest
@@ -38,9 +36,7 @@ theme:
     - search.share
     - navigation.top
     - navigation.indexes
-  palette:
     - media: "(prefers-color-scheme: light)"
-
       scheme: default
       toggle:
         icon: material/weather-night
@@ -63,7 +59,7 @@ extra:
 
 plugins:
   - tags:
-      tags_file: tags.md
+      tags_file: index.md
   - git-authors:
       show_contribution: true
       exclude:
@@ -108,4 +104,4 @@ extra_css:
   - stylesheets/extra.css
   - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
 
-copyright: Copyright &copy; 2022 - 2024 xiaoxiaoWayne
+copyright: Copyright &copy; 2022 - 2025 xiaoxiaoWayne

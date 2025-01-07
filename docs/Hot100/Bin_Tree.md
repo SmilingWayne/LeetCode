@@ -1,3 +1,9 @@
+---
+tags:
+  - 二叉树
+  - 递归
+---
+
 # 二叉树
 
 ## [101 对称二叉树 ](https://leetcode.cn/problems/symmetric-tree/description/?envType=study-plan-v2&envId=top-100-liked)

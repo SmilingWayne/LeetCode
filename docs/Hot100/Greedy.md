@@ -1,3 +1,8 @@
+---
+tags:
+  - 贪心算法
+---
+
 ## [55. 跳跃游戏](https://leetcode.cn/problems/jump-game/description/?envType=study-plan-v2&envId=top-100-liked)
 
 <!-- 所有文件名必须是该题目的英文名 -->

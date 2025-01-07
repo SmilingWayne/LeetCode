@@ -1,3 +1,9 @@
+---
+tags:
+  - 回溯
+---
+
+
 # 回溯 
 
 ## [51. N 皇后](https://leetcode.cn/problems/n-queens/description/?envType=study-plan-v2&envId=top-100-liked)

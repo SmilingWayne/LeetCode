@@ -1,3 +1,8 @@
+---
+tags:
+  - 链表
+---
+
 # 链表
 
 ## [160. 相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists/?envType=study-plan-v2&envId=top-100-liked)
