@@ -120,6 +120,34 @@ class Solution:
         return result
 ```
 
+官方做法：
+
+```python
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        n = len(nums)
+        nums.sort()
+        result = []
+
+        for first in range(n):
+            if first > 0 and nums[first] == nums[first - 1]:
+                continue
+            third = n - 1
+            target = -nums[first]
+            for second in range(first + 1, n):
+                if second > first + 1 and nums[second] == nums[second - 1]:
+                    continue
+                while third > second and nums[second] + nums[third] > target:
+                    third -= 1
+                if third == second:
+                    break
+                if nums[second] + nums[third] == target:
+                    result.append([nums[first], nums[second], nums[third]])
+        return result
+```
+
+> 官方做法这里注意了，第一个first从头开始走，第二个second从first的下一个开始走，第三个third从尾部开始走。需要处理重复的元素
+
 !!! quote "思路要清楚：先排序，然后双指针。双指针写的时候有个小技巧。就是用一个for循环充当第一个指针，然后在遍历过程中用另外的变量记录另一个（或另外几个）变量的位置。这个问题因为不允许重复，所以必须要对相同的元素进行消重。消重的时候为了避免不知道怎么处理，可以每次都把指针自增/自减1，然后判断加了之后是否会和加了之前的重复。见6～7行，见16～17行。也就是，消重的时候尽量按照 `i != i - 1` 的思路来写。"
 
 ----
@@ -221,6 +249,66 @@ class Solution:
 ```
 
 !!! quote "动得更快的是right，检测哪边是非0的，left是保证“在我之前的数字都是非0了”。"
+
+-----
+
+
+## [42. 接雨水](https://leetcode.cn/problems/trapping-rain-water/description/?envType=study-plan-v2&envId=top-100-liked)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    - 🔑🔑 难度：<span style = "color:crisma; font-weight:bold">High 困难</span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+
+> 示例1:
+> 给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
+> 
+> 输入：`height = [0,1,0,2,1,0,1,3,2,1,2,1]`
+> 
+> 输出：`6`
+> 
+> 解释：上面是由数组 `[0,1,0,2,1,0,1,3,2,1,2,1]` 表示的高度图，在这种情况下，可以接 `6` 个单位的雨水（蓝色部分表示雨水）。 
+> 
+> 
+
+
+```python
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        if not height:
+            return 0
+        n = len(height)
+        leftMax = [0 for _ in range(n)]
+        rightMax = [0 for _ in range(n)]
+        for i in range(n ):
+            if i == 0:
+                leftMax[i] = height[i]
+            else:
+                leftMax[i] = max(height[i], leftMax[i - 1])
+        for i in range(n - 1, - 1, -1):
+            if i == n - 1:
+                rightMax[i] = height[i]
+            else:
+                rightMax[i] = max(height[i], rightMax[i + 1])
+        # print(rightMax, leftMax)
+        res = 0
+        for i in range(n):
+            res += (min(leftMax[i], rightMax[i]) - height[i])
+        return res
+
+```
+
+> ![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202501181917713.png)
+
+!!! quote "分别记录左边最高的位置和右边最高的位置，取最小值，减去当前位置原本的高度即可。"
 
 
 ----

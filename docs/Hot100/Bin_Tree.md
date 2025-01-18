@@ -243,3 +243,90 @@ class Solution:
 ```
 
 !!! quote ""
+
+----
+
+## [208. 实现前缀树](https://leetcode.cn/problems/implement-trie-prefix-tree/description/?envType=study-plan-v2&envId=top-100-liked)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+
+`Trie`（发音类似 "try"）或者说 前缀树 是一种树形数据结构，用于高效地存储和检索字符串数据集中的键。这一数据结构有相当多的应用情景，例如自动补全和拼写检查。
+
+请你实现 `Trie` 类：
+
+- `Trie()` 初始化前缀树对象。
+- `void insert(String word)` 向前缀树中插入字符串 `word` 。
+- `boolean search(String word)` 如果字符串 `word` 在前缀树中，返回 `true`（即，在检索之前已经插入）；否则，返回 `false` 。
+- `boolean startsWith(String prefix)` 如果之前已经插入的字符串 `word` 的前缀之一为 `prefix` ，返回 `true` ；否则，返回 `false` 。
+ 
+
+示例：
+
+> 输入
+> `"Trie", "insert", "search", "search", "startsWith", "insert", "search"]`
+> `[], ["apple"], ["apple"], ["app"], ["app"], ["app"], ["app"]]`
+> 输出
+> `null, null, true, false, true, null, true]`
+> 
+> 解释
+> rie trie = new Trie();
+> rie.insert("apple");
+> rie.search("apple");   // 返回 True
+> rie.search("app");     // 返回 False
+> rie.startsWith("app"); // 返回 True
+> rie.insert("app");
+> rie.search("app");     // 返回 True
+> 
+
+
+```python
+class Trie:
+
+    def __init__(self):
+        self.children = [None] * 26
+        self.isEnd = False
+
+    def insert(self, word: str) -> None:
+        node = self
+        for ch in word:
+            ch_ = ord(ch) - ord('a')
+            if not node.children[ch_]:
+                node.children[ch_] = Trie()
+            node = node.children[ch_]
+        node.isEnd = True
+
+    def searchPrefix(self, prefix):
+        node = self
+        for ch in prefix:
+            ch_  = ord(ch) - ord('a')
+            if node.children[ch_] == None:
+                return None 
+            node = node.children[ch_]
+        return node 
+
+    def search(self, word: str) -> bool:
+        node = self.searchPrefix(word)
+        return node is not None and node.isEnd
+
+    def startsWith(self, prefix: str) -> bool:
+        return self.searchPrefix(prefix) is not None
+# Your Trie object will be instantiated and called as such:
+# obj = Trie()
+# obj.insert(word)
+# param_2 = obj.search(word)
+# param_3 = obj.startsWith(prefix)
+```
+
+!!! quote "这里注意，我们的每个children 都是一个Trie类，构成一个大树。还需要注意，由于需要查找特定结尾的字符串是否在这个树中，所以需要添加 isEnd 属性，不然插入 'apple'，会发现 'app' 这个词也能查找到，但是实际上这只是一个前缀；第三，注意我们自己实现了 `searchPrefix` 这个方法用来查找前缀。"
+
