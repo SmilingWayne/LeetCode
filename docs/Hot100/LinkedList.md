@@ -261,5 +261,130 @@ class Solution:
 
 !!! quote "要注意，可能要删除的是第一个节点！所以分情况讨论，如果删除的是第一个节点，那么`head.next`，否则就利用快慢指针进行操作。"
 
+----
 
 
+## [25. K 个一组翻转链表](https://leetcode.cn/problems/reverse-nodes-in-k-group/description/?envType=study-plan-v2&envId=top-100-liked)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note "链表中的困难题"
+    <!-- 这里记载考察的数据结构、算法等 -->
+    - 🔑🔑 难度： <span style = "color:crisma; font-weight:bold">High 困难</span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+
+> 示例1:
+> 给你链表的头节点 `head` ，每 `k` 个节点一组进行翻转，请你返回修改后的链表。
+> 
+> `k` 是一个正整数，它的值小于或等于链表的长度。如果节点总数不是 `k` 的整数倍，那么请将最后剩余的节点保持原有顺序。
+> 
+> 你不能只是单纯的改变节点内部的值，而是需要实际进行节点交换。
+
+
+> 
+
+
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+
+        hair = ListNode(0)
+        hair.next = head 
+        pre = hair 
+        while head:
+            tail = pre 
+            for i in range(k):
+                tail = tail.next 
+                if not tail:
+                    return hair.next 
+            nxt = tail.next
+            head, tail = self.reverseSub(head, tail)
+            pre.next = head
+            tail.nxt = nxt 
+            pre = tail 
+            head = tail.next 
+        return hair.next
+
+
+        
+    def reverseSub(self, head, tail):
+        prev = tail.next 
+        curr = head 
+        while prev != tail:
+            post = curr.next 
+            curr.next = prev 
+            prev = curr
+            curr = post 
+        return tail, head 
+    
+
+```
+
+!!! quote "首先，这一题，有两个比较坑的，第一个就是需要加Dummy Node，不然转的时候很麻烦。第二个就是，我们要对原来的链表，在给定head和tail的情况下进行旋转。所以和最基础的反转链表题有不同。我们的prev一开始不再是None了，而是tail后续的节点，我们的终止条件也变成了`prev != tail`，解释起来见下："
+
+
+    ```python
+    def reverseSub(self, head, tail):
+        # 首先，将 prev 指针初始化为 tail 的下一个节点
+        # 这一步是为了在反转过程中，将反转后的链表段重新连接回原链表
+        prev = tail.next 
+        # curr 指针初始化为 head，从链表段的起始节点开始进行反转操作
+        curr = head 
+        # 当 prev 指针不等于 tail 时，继续进行反转操作
+        while prev != tail:
+            # post 指针用于保存 curr 指针的下一个节点
+            # 因为在反转过程中，curr.next 会被修改，所以需要提前保存
+            post = curr.next 
+            # 将 curr 节点的 next 指针指向 prev
+            # 这一步是反转操作的核心，将当前节点指向前一个节点
+            curr.next = prev 
+            # prev 指针向后移动一位，指向当前节点 curr
+            prev = curr
+            # curr 指针向后移动一位，指向之前保存的下一个节点 post
+            curr = post 
+        # 当循环结束时，链表段已经反转完成
+        # 返回反转后的新头节点 tail 和新尾节点 head
+        return tail, head 
+    ```
+
+    **`while prev != tail:` 判断逻辑解释**
+
+    在反转链表的过程中，我们需要一个终止条件来确定何时停止反转操作。这里使用 `prev != tail` 作为循环条件，原因如下：
+
+    - **反转操作的边界**：我们要反转的是从 `head` 到 `tail` 这一段链表。在反转过程中，`prev` 指针初始化为 `tail.next`，表示反转后的链表段要连接的下一个节点。随着反转操作的进行，**`prev` 指针会不断向前移动，而 `curr` 指针也会不断向后移动。** （参考下面的举例）
+    - **终止条件**：当 `prev` 指针移动到 `tail` 节点时，说明从 `head` 到 `tail` 这一段链表已经全部反转完成。因为在反转过程中，我们是通过不断将当前节点指向前一个节点来实现反转的，当 `prev` 等于 `tail` 时，意味着 `tail` 节点已经成为了反转后链表段的新头节点，此时反转操作完成，循环终止。
+
+    **示例说明**
+
+    假设我们有一个链表 `1 -> 2 -> 3 -> 4 -> 5`，要反转从节点 `2` 到节点 `4` 这一段，即 `2 -> 3 -> 4`。
+
+    - 初始状态：`head = 2`，`tail = 4`，`prev = 5`，`curr = 2`。
+    - 第一次循环：
+    - `post = 3`，`curr.next = 5`，即 `2 -> 5`，`prev = 2`，`curr = 3`
+    - 第二次循环：
+    - `post = 4`，`curr.next = 2`，即 `3 -> 2`，`prev = 3`，`curr = 4`
+    - 第三次循环：
+    - `post = 5`，`curr.next = 3`，即 `4 -> 3`，`prev = 4`，`curr = 5`
+    - 此时 `prev == tail`，循环终止，链表段 `2 -> 3 -> 4` 反转后变为 `4 -> 3 -> 2`。
+
+    通过这种方式，我们可以有效地反转链表中的指定部分。
+
+    -----
+
+    **除此之外，还需要把翻转过的部分重新叠加到原来的LinkedList当中去。** 这就是一些比较基础的操作了。
+
+!!! note "一些概念总结"
+    **关于链表中节点相等的含义**
+    
+    在链表相关操作里，判断两个节点是否相等，通常就是判断它们是否为同一个节点，也就是是否指向内存中的同一个对象。在 Python 里，使用 == 来比较两个节点时，比较的是它们的引用（即内存地址）。如果两个节点变量指向内存中同一个节点对象，那么它们是相等的；反之则不相等。
