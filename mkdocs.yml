@@ -21,6 +21,7 @@ nav:
       - 列表｜矩阵: Hot100/Array.md
       - 栈｜队列: Hot100/Stack.md
       - 二分搜索: Hot100/Bin_search.md
+      - DFS/BFS: Hot100/DFS_BFS.md
       - 贪心算法: Hot100/Greedy.md
       - 哈希: Hot100/Hash.md
 docs_dir: docs/
@@ -125,7 +126,6 @@ markdown_extensions:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator:
         !!python/name:material.extensions.emoji.to_svg # Update 2023.12.18 for locations
-
 
 
 extra_javascript:
