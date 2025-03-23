@@ -5,7 +5,92 @@ tags:
 
 # 动态规划
 
-## [322.零钱兑换](https://leetcode.cn/problems/coin-change/description/?envType=study-plan-v2&envId=top-100-liked)
+## 打家劫舍系列
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    [打家劫舍 I](https://leetcode.cn/problems/house-robber/submissions/601261199/?envType=study-plan-v2&envId=dynamic-programming) 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span> 
+
+    [打家劫舍 II](https://leetcode.cn/problems/house-robber-ii/) 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span> 
+
+    [打家劫舍 III](https://leetcode.cn/problems/house-robber-iii/description/) 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span> 
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+- I. 计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。给定一个代表每个房屋存放金额的非负整数数组，计算你 不触动警报装置的情况下 ，一夜之内能够偷窃到的最高金额。
+
+```python
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        n = len(nums)
+        dp = [0 for _ in range(n + 1)]
+        for i in range(n):
+            dp[i + 1] = max(dp[i], dp[i - 1] + nums[i]) # 位置 i 所获得的最高金额，等于前一个的和倒数第二个+自己
+        return dp[-1]
+```
+
+- II. 同上，但所有的房屋围成一圈 ，这意味着第一个房屋和最后一个房屋是紧挨着的，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警 。
+
+!!! example "==两次遍历==，可以复用I的代码，但是 n = max([2:-1] + num[0], [1:-1]) ；注意可以用常数级别空间进行解决。"
+
+```python
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        def temp(arr):
+            n = len(arr)
+            f0 = f1 = 0
+            
+            for i in range(n):
+                new_f = max(f1, f0 + arr[i])
+                f0 = f1
+                f1 = new_f
+            return f1
+
+        a = temp(nums[1:]) 
+        b = temp(nums[2: -1]) + nums[0]
+        return max(a, b)
+```
+
+- III. 在二叉树上，相连的节点不能同时被偷窃。
+
+!!! example "每个节点会有两个状态，每次递归的时候分别返回这两个状态下的最大值，然后当前节点的也按照同理进行计算。"
+
+```python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def rob(self, root: Optional[TreeNode]) -> int:
+        def helper(head):
+            if not head:
+                return 0, 0
+            l_rob, l_not_rob = helper(head.left)
+            r_rob, r_not_rob = helper(head.right)
+            rob = head.val + l_not_rob + r_not_rob
+            not_rob = max(l_rob, l_not_rob) + max(r_rob, r_not_rob)
+            return rob, not_rob
+        return max(helper(root))
+            
+```
+
+
+
+!!! quote ""
+
+-------
+
+
+
+## [322.零钱兑换🌟](https://leetcode.cn/problems/coin-change/description/?envType=study-plan-v2&envId=top-100-liked)
 
 <!-- 所有文件名必须是该题目的英文名 -->
 

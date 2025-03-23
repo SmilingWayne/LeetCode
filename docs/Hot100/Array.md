@@ -329,3 +329,57 @@ class Solution:
 ```
 
 !!! quote "经典的“Z” 字形状搜索。从右上向左下搜索。如果比第一行的某列元素还要小，那么只可能在它左侧的列中。如果比这一列某行的值还小，那么继续向下一行走，直到走到头。"
+
+
+-----
+
+
+!!! warning "以下是面试经典150题的相关内容"
+
+## [88. 合并两个有序数组](https://leetcode.cn/problems/merge-sorted-array/description/?envType=study-plan-v2&envId=top-interview-150)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    - 🔑🔑 难度：<span style = "color:Green; font-weight:bold">Easy 简单</span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+给你两个按 非递减顺序 排列的整数数组 `nums1` 和 `nums2`，另有两个整数`m` 和 `n` ，分别表示 `nums1` 和 `nums2` 中的元素数目。
+
+请你 合并 `nums2` 到 `nums1` 中，使合并后的数组同样按 非递减顺序 排列。
+
+注意：最终，合并后数组不应由函数返回，而是存储在数组 `nums1` 中。为了应对这种情况，`nums1` 的初始长度为 `m + n`，其中前 `m` 个元素表示应合并的元素，后 `n` 个元素为 0 ，应忽略。`nums2` 的长度为 `n` 。
+
+
+```python
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+        i = m - 1
+        j = n - 1
+        tmp = m + n - 1
+        while i >= 0 and j >= 0:
+            if nums1[i] >= nums2[j]:
+                nums1[tmp] = nums1[i]
+                tmp -= 1
+                i -= 1
+            else:
+                nums1[tmp] = nums2[j]
+                tmp -= 1
+                j -= 1
+        while j >= 0:
+            nums1[tmp] = nums2[j]
+            j -= 1
+            tmp -= 1
+
+```
+
+!!! quote "和最简单的那个题目是类似的，但是要从后往前iterate，这样可以避免覆盖掉nums1的值。注意有可能nums2更加小，while循环完了之后要补充检查一下指针的位置，是否存在比nums1还要小的。"
