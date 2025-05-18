@@ -96,6 +96,9 @@ plugins:
 
 markdown_extensions:
   - admonition
+  - meta
+  - attr_list
+  - md_in_html
   - def_list
   - pymdownx.details
   - pymdownx.superfences
