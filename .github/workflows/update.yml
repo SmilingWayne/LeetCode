@@ -26,5 +26,11 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
-      - run: pip install mkdocs-material mkdocs-git-revision-date-localized-plugin mkdocs-rss-plugin mkdocs-git-authors-plugin mkdocs-statistics-plugin  mkdocs-mermaid2-plugin
+      - run: pip install mkdocs-material mkdocs-git-revision-date-localized-plugin mkdocs-rss-plugin mkdocs-git-authors-plugin mkdocs-mermaid2-plugin
+      - name: Install modified mkdocs-statistics-plugin
+        run: |
+          git clone https://github.com/SmilingWayne/mkdocs-statistics-plugin
+          pip install ./mkdocs-statistics-plugin
+          rm -rf mkdocs-statistics-plugin
+      - run: pip cache purge
       - run: mkdocs gh-deploy --force
