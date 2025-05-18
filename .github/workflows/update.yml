@@ -29,7 +29,7 @@ jobs:
       - run: pip install mkdocs-material mkdocs-git-revision-date-localized-plugin mkdocs-rss-plugin mkdocs-git-authors-plugin mkdocs-mermaid2-plugin
       - name: Install modified mkdocs-statistics-plugin
         run: |
-          git clone https://github.com/KinnariyaMamaTanha/mkdocs-statistics-plugin
+          git clone https://github.com/SmilingWayne/mkdocs-statistics-plugin
           pip install ./mkdocs-statistics-plugin
           rm -rf mkdocs-statistics-plugin
       - run: pip cache purge
