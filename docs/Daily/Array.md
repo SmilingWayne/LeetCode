@@ -1,3 +1,5 @@
+# 数组
+
 ## [3138. 同位字符串连接的最小长度](https://leetcode.cn/problems/minimum-length-of-anagram-concatenation/description/)
 
 <!-- 所有文件名必须是该题目的英文名 -->

@@ -7,6 +7,8 @@ nav:
   - 日常:
       - Daily/index.md
       - 数组: Daily/Array.md
+      - 测试新统计指标: Daily/Test.md
+      - 测试新统计指标: Daily/Test2.md
   - 第二部分:
       - Part2/index.md
   - 面试题:
