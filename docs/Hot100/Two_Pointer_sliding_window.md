@@ -11,7 +11,7 @@ tags:
 
 !!! note "两边向中间夹逼"
     <!-- 这里记载考察的数据结构、算法等 -->
-    - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+    🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
 
 <!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
 <!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
@@ -51,7 +51,7 @@ class Solution:
 
 ```
 
-!!! quote "为什么可以两边向中间夹，每次只需要移动更小的指针：因为随着指针移动，能用来装水的范围只会越来越小，所以，就算移动最大的指针，找到的结果不会比现在的这个解更大的。"
+!!! quote "==为什么可以两边向中间夹，每次只需要移动更小的指针== ：因为随着指针移动，能用来装水的范围只会越来越小，所以，就算移动最大的指针，找到的结果不会比现在的这个解更大的。"
 
 -----
 
@@ -158,7 +158,7 @@ class Solution:
 
 !!! note ""
     <!-- 这里记载考察的数据结构、算法等 -->
-    - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+    🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
 
 <!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
 <!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
@@ -205,7 +205,7 @@ class Solution:
 
 !!! note "双指针的典型题"
     <!-- 这里记载考察的数据结构、算法等 -->
-    - 🔑🔑 难度：<span style = "color:Green; font-weight:bold">Easy 简单</span>
+    🔑🔑 难度：<span style = "color:Green; font-weight:bold">Easy 简单</span>
 
 <!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
 <!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
@@ -259,7 +259,7 @@ class Solution:
 
 !!! note ""
     <!-- 这里记载考察的数据结构、算法等 -->
-    - 🔑🔑 难度：<span style = "color:crisma; font-weight:bold">High 困难</span>
+    🔑🔑 难度：<span style = "color:crisma; font-weight:bold">High 困难</span>
 
 <!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
 <!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
@@ -323,7 +323,7 @@ class Solution:
 
 !!! note ""
     <!-- 这里记载考察的数据结构、算法等 -->
-    - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+    🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
 
 <!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
 <!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->

@@ -11,11 +11,17 @@ tags:
 
 !!! note ""
     <!-- 这里记载考察的数据结构、算法等 -->
-    [打家劫舍 I](https://leetcode.cn/problems/house-robber/submissions/601261199/?envType=study-plan-v2&envId=dynamic-programming) 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span> 
+    [打家劫舍 I](https://leetcode.cn/problems/house-robber/submissions/601261199/?envType=study-plan-v2&envId=dynamic-programming) 
+    
+    🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span> 
 
-    [打家劫舍 II](https://leetcode.cn/problems/house-robber-ii/) 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span> 
+    [打家劫舍 II](https://leetcode.cn/problems/house-robber-ii/) 
+    
+    🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span> 
 
-    [打家劫舍 III](https://leetcode.cn/problems/house-robber-iii/description/) 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span> 
+    [打家劫舍 III](https://leetcode.cn/problems/house-robber-iii/description/) 
+    
+    🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span> 
 
 <!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
 <!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
@@ -96,7 +102,7 @@ class Solution:
 
 !!! note "递推表"
     <!-- 这里记载考察的数据结构、算法等 -->
-    - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+    🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
 
 <!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
 <!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
@@ -150,7 +156,7 @@ class Solution:
 
 !!! note ""
     <!-- 这里记载考察的数据结构、算法等 -->
-    - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span> 
+    🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span> 
 
 <!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
 <!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
@@ -196,7 +202,7 @@ class Solution:
 
 !!! note ""
     <!-- 这里记载考察的数据结构、算法等 -->
-    - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+    🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
 
 <!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
 <!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->

@@ -6,7 +6,7 @@
 
 !!! note ""
     <!-- 这里记载考察的数据结构、算法等 -->
-    - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+    🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
 
 <!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
 <!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
@@ -57,7 +57,7 @@ class Solution:
 
 !!! note ""
     <!-- 这里记载考察的数据结构、算法等 -->
-    - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+    🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
 
 <!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
 <!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
@@ -107,7 +107,7 @@ class Solution:
 
 !!! note ""
     <!-- 这里记载考察的数据结构、算法等 -->
-    - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+    🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
 
 <!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
 <!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->

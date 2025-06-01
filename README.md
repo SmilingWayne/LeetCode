@@ -1,3 +1,3 @@
-# This is the first Commit
+# My LeetCode 
 
-这是一个成功提交的例子。
+Some of Leet Code exercise. Deployed via mkdocs.
