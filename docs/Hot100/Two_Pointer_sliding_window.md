@@ -2,6 +2,7 @@
 tags:
   - 双指针
   - 滑动窗口
+  - 前缀和
 ---
 
 # 双指针 / 滑动窗口
@@ -177,25 +178,29 @@ class Solution:
 > 解释：区间 `[1,3]` 和 `[2,6]` 重叠, 将它们合并为 `[1,6].`
 > 
 
-```python hl_lines="10"
+```python
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        intervals.sort(key = lambda row: row[0])
+        intervals.sort(key = lambda x: x[0])
+        l = intervals[0][0]
+        r = intervals[0][1]
         result = []
-        l = 0
-        r = 0
-        while r < len(intervals):
-            left_, right_ = intervals[l][0], intervals[l][1]
-            while r < len(intervals) and intervals[r][0] <= right_:
-                right_ = max(intervals[r][1], right_)
-                r += 1
-            result.append([left_, right_])
-            l = r 
+        n = len(intervals)
+        for idx, (a,b) in enumerate(intervals):
+            if a > r:
+                result.append([l, r])
+                l = a
+                r = b
+            else:
+                r = max(r, b)
+            
+            if idx == n - 1:
+                result.append([l, r])
         return result
 
 ```
 
-!!! quote "先排序，后合并，注意右侧项！"
+!!! quote "先排序，后合并，始终维护“当前的最左边”和“当前的最右边”。注意右侧项变化的逻辑：`max(r, b)`"
 
 ----
 
@@ -253,7 +258,7 @@ class Solution:
 -----
 
 
-## [42. 接雨水](https://leetcode.cn/problems/trapping-rain-water/description/?envType=study-plan-v2&envId=top-100-liked)
+## [🌟42. 接雨水](https://leetcode.cn/problems/trapping-rain-water/description/?envType=study-plan-v2&envId=top-100-liked)
 
 <!-- 所有文件名必须是该题目的英文名 -->
 
@@ -310,12 +315,77 @@ class Solution:
 
 !!! quote "分别记录左边最高的位置和右边最高的位置，取最小值，减去当前位置原本的高度即可。"
 
-
 ----
 
-# 滑动窗口
 
 !!! quote "以下为滑动窗口部分的题目"
+
+
+## [438. 找到字符串中所有字母异位词](https://leetcode.cn/problems/find-all-anagrams-in-a-string/description/?envType=study-plan-v2&envId=top-100-liked)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+给定两个字符串 s 和 p，找到 s 中所有 p 的 异位词 的子串，返回这些子串的起始索引。不考虑答案输出的顺序。
+
+ 
+
+示例 1:
+
+输入: s = "cbaebabacd", p = "abc"
+输出: [0,6]
+解释:
+起始索引等于 0 的子串是 "cba", 它是 "abc" 的异位词。
+起始索引等于 6 的子串是 "bac", 它是 "abc" 的异位词。
+ 示例 2:
+
+输入: s = "abab", p = "ab"
+输出: [0,1,2]
+解释:
+起始索引等于 0 的子串是 "ab", 它是 "ab" 的异位词。
+起始索引等于 1 的子串是 "ba", 它是 "ab" 的异位词。
+起始索引等于 2 的子串是 "ab", 它是 "ab" 的异位词。
+
+
+```python
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        
+        result = []
+        m = len(s)
+        n = len(p)
+        if m < n:
+            return result
+        cnt_s = [0 for _ in range(26)]
+        cnt_p = [0 for _ in range(26)]
+        for i in range(n):
+            cnt_s[ord(s[i]) - ord('a')] += 1
+            cnt_p[ord(p[i]) - ord('a')] += 1
+        
+        if cnt_s == cnt_p:
+            result.append(0)
+        for i in range(n, m):
+            cnt_s[ord(s[i]) - ord('a')] += 1
+            cnt_s[ord(s[i - n]) - ord('a')] -= 1
+            if cnt_s == cnt_p:
+                result.append(i - n + 1)
+        return result
+        
+
+```
+
+!!! quote "注意，判别两个列表是否完全相同，可以直接用等于号！同时，每次动一个字母，删去前面的，新增保留后面的，与目标做对比。"
+
+
 
 ## [209. 长度最小的子数组](https://leetcode.cn/problems/minimum-size-subarray-sum/description/?envType=study-plan-v2&envId=top-interview-150)
 
@@ -371,3 +441,105 @@ class Solution:
 ```
 
 !!! quote "滑动窗口：始终滑动那个能够满足“ >= target ”的窗口! for循环记录最右侧的位置。"
+
+
+## [🌟239. 滑动窗口最大值](https://leetcode.cn/problems/subarray-sum-equals-k/description/?envType=study-plan-v2&envId=top-100-liked)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    🔑🔑 难度：<span style = "color:crisma; font-weight:bold">High 困难</span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+给你一个整数数组 nums，有一个大小为 k 的滑动窗口从数组的最左侧移动到数组的最右侧。你只可以看到在滑动窗口内的 k 个数字。滑动窗口每次只向右移动一位。
+
+返回 滑动窗口中的最大值 。
+
+ 
+
+示例 1：
+
+输入：`nums = [1,3,-1,-3,5,3,6,7], k = 3`
+
+输出：`[3,3,5,5,6,7]`
+
+解释：
+
+滑动窗口的位置                最大值
+---------------               -----
+>[1  3  -1] -3  5  3  6  7    ->   3
+> 1 [3  -1  -3] 5  3  6  7     ->  3
+> 1  3 [-1  -3  5] 3  6  7     ->  5
+> 1  3  -1 [-3  5  3] 6  7     ->  5
+> 1  3  -1  -3 [5  3  6] 7     ->  6
+> 1  3  -1  -3  5 [3  6  7]    ->  7
+示例 2：
+
+输入：nums = [1], k = 1
+输出：[1]
+
+```python hl_lines="6 7 9 10"
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        queue = deque()
+        result = []
+        for idx, num in enumerate(nums):
+            if queue and idx - k == queue[0]:
+                queue.popleft()
+
+            while queue and num > nums[queue[-1]]:
+                queue.pop()
+            queue.append(idx)
+            if idx >= k - 1: 
+                result.append(nums[queue[0]])
+        return result
+```
+
+!!! quote "用一个优先队列进行处理：每当我们向右移动窗口时，我们就可以把一个新的元素放入优先队列中，并保证最上层的元素是所有元素的最大值。如果这个值足够大，那么前面那些小的值就永远不可能出现在滑动窗口中了，我们可以将其永久地从优先队列中移除。以此类推，如果一个新加入的比前面的某些大，那么可以直接取代这些前面的。同样，如果这个元素足够老，那么它会被剔除。"
+
+
+
+# 前缀和
+
+## [🌟560. 和为 K 的子数组](https://leetcode.cn/problems/subarray-sum-equals-k/description/?envType=study-plan-v2&envId=top-100-liked) 
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+
+> 示例1:
+> 
+> 
+
+
+```python
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        prevSum = [0 for _ in range(n + 1)]
+        for i in range(n):
+            prevSum[i + 1] = prevSum[i] + nums[i]
+        record = defaultdict(int)
+        result = 0
+        for i in range(n + 1):
+            result += record[prevSum[i] - k]
+            record[prevSum[i]] += 1
+        return result
+```
+
+!!! quote ""

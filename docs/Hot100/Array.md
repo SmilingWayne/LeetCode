@@ -1,6 +1,6 @@
 # 数组与矩阵
 
-## [52. 最大子数组和](https://leetcode.cn/problems/maximum-subarray/?envType=study-plan-v2&envId=top-100-liked)
+## [🌟52. 最大子数组和](https://leetcode.cn/problems/maximum-subarray/?envType=study-plan-v2&envId=top-100-liked)
 
 <!-- 所有文件名必须是该题目的英文名 -->
 
@@ -48,7 +48,7 @@ class Solution:
 
 
 
-## [轮转数组](https://leetcode.cn/problems/rotate-array/description/?envType=study-plan-v2&envId=top-100-liked)
+## [189. 轮转数组](https://leetcode.cn/problems/rotate-array/description/?envType=study-plan-v2&envId=top-100-liked)
 
 <!-- 所有文件名必须是该题目的英文名 -->
 
@@ -113,7 +113,7 @@ class Solution:
 # reverse last ones: --->----->
 ```
 
-!!! quote ""
+!!! quote "有凑巧的做法：3次首尾颠倒即可。"
 
 ---
 
@@ -172,7 +172,23 @@ class Solution:
         return result
 ```
 
-!!! quote ""
+```python
+# Better!
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        left = [1 for _ in range(n)]
+        for i in range(1, n):
+            left[i] = left[i - 1] * nums[i - 1]
+        result = []
+        R = 1
+        for i in range(n - 1, -1, -1):
+            result.append(R * left[i])
+            R *= nums[i]
+        return result[::-1]
+```
+
+!!! quote "一种方法是维护两个列表，分别记录前缀和后缀乘积，第二种方法是，只用一个列表，然后保存的时候从后向前，一边走一边记录后缀。"
 
 ----
 
