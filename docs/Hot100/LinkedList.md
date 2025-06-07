@@ -210,7 +210,7 @@ class Solution:
 
 ----
 
-## [19. 删除链表的倒数第k个节点](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/?envType=study-plan-v2&envId=top-100-liked)
+## [🌟19. 删除链表的倒数第k个节点](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/?envType=study-plan-v2&envId=top-100-liked)
 
 <!-- 所有文件名必须是该题目的英文名 -->
 
@@ -263,6 +263,33 @@ class Solution:
 
 ----
 
+## [24. 两两交换链表]()
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    - 🔑🔑 难度：
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+
+> 示例1:
+> 
+> 
+
+
+```python
+
+```
+
+!!! quote ""
+
+
 
 ## [25. K 个一组翻转链表](https://leetcode.cn/problems/reverse-nodes-in-k-group/description/?envType=study-plan-v2&envId=top-100-liked)
 
@@ -277,6 +304,7 @@ class Solution:
 <!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
 
 <!-- 题目简介 -->
+
 
 
 > 示例1:
