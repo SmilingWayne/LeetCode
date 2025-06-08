@@ -54,7 +54,7 @@ class Solution:
 
 -----
 
-## [206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/?envType=study-plan-v2&envId=top-100-liked)
+## [🌟206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/?envType=study-plan-v2&envId=top-100-liked)
 
 <!-- 所有文件名必须是该题目的英文名 -->
 
@@ -291,7 +291,7 @@ class Solution:
 
 
 
-## [25. K 个一组翻转链表](https://leetcode.cn/problems/reverse-nodes-in-k-group/description/?envType=study-plan-v2&envId=top-100-liked)
+## [🌟25. K 个一组翻转链表](https://leetcode.cn/problems/reverse-nodes-in-k-group/description/?envType=study-plan-v2&envId=top-100-liked)
 
 <!-- 所有文件名必须是该题目的英文名 -->
 
@@ -416,3 +416,117 @@ class Solution:
     **关于链表中节点相等的含义**
     
     在链表相关操作里，判断两个节点是否相等，通常就是判断它们是否为同一个节点，也就是是否指向内存中的同一个对象。在 Python 里，使用 == 来比较两个节点时，比较的是它们的引用（即内存地址）。如果两个节点变量指向内存中同一个节点对象，那么它们是相等的；反之则不相等。
+
+
+## [146. LRU缓存](https://leetcode.cn/problems/lru-cache/description/)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+请你设计并实现一个满足  LRU (最近最少使用) 缓存 约束的数据结构。
+实现 LRUCache 类：
+LRUCache(int capacity) 以 正整数 作为容量 capacity 初始化 LRU 缓存
+int get(int key) 如果关键字 key 存在于缓存中，则返回关键字的值，否则返回 -1 。
+void put(int key, int value) 如果关键字 key 已经存在，则变更其数据值 value ；如果不存在，则向缓存中插入该组 key-value 。如果插入操作导致关键字数量超过 capacity ，则应该 逐出 最久未使用的关键字。
+函数 get 和 put 必须以 O(1) 的平均时间复杂度运行。
+
+ 
+
+示例：
+
+> 输入
+> 
+> ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
+> [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+
+> [null, null, null, 1, null, -1, null, -1, 3, 4]
+
+```python
+class DLinkedNdode:
+    def __init__(self, key = 0, value = 0):
+        self.key = key
+        self.value = value 
+        self.prev = None
+        self.next = None 
+
+class LRUCache:
+
+    def __init__(self, capacity: int):
+        self.cache = dict()
+        self.head = DLinkedNdode()
+        self.tail = DLinkedNdode()
+        self.head.next = self.tail
+        self.tail.prev = self.head 
+        self.capacity = capacity 
+        self.size = 0
+
+    def get(self, key: int) -> int:
+        
+        if key not in self.cache:
+            return -1
+        node = self.cache[key]
+        self.moveToHead(node)
+        return node.value
+
+    def put(self, key: int, value: int) -> None:
+        if key not in self.cache:
+            node = DLinkedNdode(key, value)
+            self.cache[key] = node 
+            self.size += 1
+            self.addToHead(node)
+            if self.size > self.capacity:
+                node1 = self.removeTail()
+                self.cache.pop(node1.key)
+                self.size -= 1
+        else:
+            node = self.cache[key]
+            node.value = value 
+            self.moveToHead(node)
+
+
+        
+    def addToHead(self, node):
+        node.prev = self.head 
+        node.next = self.head.next 
+        self.head.next.prev = node
+        self.head.next = node 
+        
+    def removeNode(self, node):
+        node.prev.next = node.next 
+        node.next.prev = node.prev
+        
+    def moveToHead(self, node):
+        self.removeNode(node)
+        self.addToHead(node)
+
+    def removeTail(self):
+        node = self.tail.prev 
+        self.removeNode(node)
+        return node 
+        
+
+
+# Your LRUCache object will be instantiated and called as such:
+# obj = LRUCache(capacity)
+# param_1 = obj.get(key)
+# obj.put(key,value)
+```
+
+!!! quote ""
+    双向链表，重点是新增的几种方法：
+
+    1. addToHead: 用于在出现新的值的时候把它**加入**到头；
+    2. removeNode: 删除某个节点；
+    3. moveToHead: 用于在旧值出现时候**移动**到头；
+    4. removeTail: 删除并返回尾；
+
+    整个逻辑是用哈希表记录当前存在的cache。

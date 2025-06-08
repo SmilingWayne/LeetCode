@@ -1,5 +1,5 @@
 site_name: LeetCodebySmile
-site_url: https://smilingwayne.github.io/LeetCode/
+site_url: https://github.com/SmlingWayne/LeetCode
 site_description: 笑笑的题库!
 
 nav:
@@ -7,9 +7,9 @@ nav:
   - 日常:
       - Daily/index.md
       - 数组: Daily/Array.md
-      - 测试新统计指标: Daily/Test2.md
-  - 第二部分:
-      - Part2/index.md
+  #     - 测试新统计指标: Daily/Test2.md
+  # - 第二部分:
+  #     - Part2/index.md
   - 面试题:
       - 回溯: Interview/Interview1.md
   - 100题&面试150题:
@@ -27,6 +27,10 @@ nav:
       - 哈希: Hot100/Hash.md
 
 docs_dir: docs/
+
+site_author: SmilingWayne
+repo_name: SmilingWayne/LeetCode
+repo_url: https://github.com/SmilingWayne/LeetCode
 
 theme:
   name: material
