@@ -6,7 +6,7 @@ tags:
 
 # 二叉树
 
-## [101 对称二叉树 ](https://leetcode.cn/problems/symmetric-tree/description/?envType=study-plan-v2&envId=top-100-liked)
+## [101 对称二叉树](https://leetcode.cn/problems/symmetric-tree/description/?envType=study-plan-v2&envId=top-100-liked)
 
 <!-- 所有文件名必须是该题目的英文名 -->
 
@@ -330,3 +330,162 @@ class Trie:
 
 !!! quote "这里注意，我们的每个children 都是一个Trie类，构成一个大树。还需要注意，由于需要查找特定结尾的字符串是否在这个树中，所以需要添加 isEnd 属性，不然插入 'apple'，会发现 'app' 这个词也能查找到，但是实际上这只是一个前缀；第三，注意我们自己实现了 `searchPrefix` 这个方法用来查找前缀。"
 
+
+
+## [543. 二叉树的直径](https://leetcode.cn/problems/diameter-of-binary-tree/description/?envType=study-plan-v2&envId=top-100-liked)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span> 
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+> 输入：root = [1,2,3,4,5]
+> 
+> 输出：3
+> 
+> 解释：3 ，取路径 [4,2,1,3] 或 [5,2,1,3] 的长度。
+
+![](https://assets.leetcode.com/uploads/2021/03/06/diamtree.jpg)
+
+
+```python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        
+        self.maxVal = 0
+        def dfs(head):
+            if not head:
+                return -1
+            L = dfs(head.left) + 1
+            R = dfs(head.right) + 1
+            self.maxVal = max(self.maxVal, L + R )
+            return max(L, R) 
+        dfs(root)
+        return self.maxVal
+        
+```
+
+!!! quote "可以记模板：到当前节点为止，其直径是其左侧的链条长 + 右侧的链条长，左侧链条如果为None，则需要返回0，而以该节点为孩子的父节点，其长度为该节点左右最长链条里选择一个。"
+
+---
+
+
+## [230. 二叉搜索树中的第K小元素](https://leetcode.cn/problems/kth-smallest-element-in-a-bst/description/?envType=study-plan-v2&envId=top-100-liked)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span> 
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+给定一个二叉搜索树的根节点 root ，和一个整数 k ，请你设计一个算法查找其中第 k 小的元素（从 1 开始计数）。
+
+
+
+```python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+        self.K = k 
+        self.result = 0
+
+        def dfs(head):
+            if not head:
+                return 
+            
+            if self.K == 0:
+                return 
+            
+            dfs(head.left)
+            self.K -= 1
+            if self.K == 0:
+                self.result = head.val 
+                return 
+            dfs(head.right)
+        
+        dfs(root)
+        return self.result
+```
+
+!!! quote "模板题：二叉搜索树的中序遍历就是一个排序的数组，所以直接中序遍历，但是记录当前是“倒数第几个”，直到某次减为0"
+
+
+## [114. 二叉树展开为链表](https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/description/?envType=study-plan-v2&envId=top-100-liked)
+
+
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span> 
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+给你二叉树的根结点 `root` ，请你将它展开为一个单链表：
+
+展开后的单链表应该同样使用 `TreeNode` ，其中 `right` 子指针指向链表中下一个结点，而左子指针始终为 `null` 。
+展开后的单链表应该与二叉树 先序遍历 顺序相同。
+ 
+
+
+```python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def flatten(self, root: Optional[TreeNode]) -> None:
+        """
+        Do not return anything, modify root in-place instead.
+        """
+        result = []
+        def preorder(head):
+            if not head:
+                return 
+            result.append(head)
+            preorder(head.left)
+            preorder(head.right)
+        preorder(root)
+        for idx, node in enumerate(result):
+            if idx == len(result) - 1:
+                node.left = None 
+                node.right = None 
+            else:
+                node.left = None 
+                node.right = result[idx + 1]
+
+
+```
+
+!!! quote "先过一遍先序遍历，然后根据这个顺序，重新连接二叉树的节点。"
