@@ -149,6 +149,56 @@ class Solution:
 !!! quote "注意，最终结果的来源具体有：包含root，同时从root向右；包含root，同时从root向左；不包含root，此时就是递归了，分别检查左右各有几个。所以有一个函数要单独实现：包含root的路径搜寻。（对应上面的rootSum函数）"
 
 
+---
+
+## [124. 二叉树的最大路径和](https://leetcode.cn/problems/binary-tree-maximum-path-sum/description/?envType=study-plan-v2&envId=top-100-liked)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    🔑🔑 难度：<span style = "color:crisma; font-weight:bold">High 困难</span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+二叉树中的 路径 被定义为一条节点序列，序列中每对相邻节点之间都存在一条边。同一个节点在一条路径序列中 至多出现一次 。该路径 至少包含一个 节点，且不一定经过根节点。
+
+路径和 是路径中各节点值的总和。
+
+给你一个二叉树的根节点 root ，返回其 最大路径和 。
+
+![](https://assets.leetcode.com/uploads/2020/10/13/exx1.jpg)
+
+```python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maxPathSum(self, root: Optional[TreeNode]) -> int:
+        self.maxValue = float('-inf')
+
+        def dfs(head):
+            if not head:
+                return 0
+            max_l = max(0, dfs(head.left))
+            max_r = max(0, dfs(head.right))
+            self.maxValue = max(self.maxValue,  max_l + max_r + head.val)
+            return max(max_l, max_r) + head.val
+        
+        dfs(root)
+        return self.maxValue
+```
+
+!!! quote "`dfs(head)` 返回的结果是“包含head的路径的最大值，因此，由两部分组成：左边的最大，右边的最大，加上自己。而每次递归的时候，都去判断一下，是否可以更新当前的value。而正因为是包含head的路径的最大值，所以这个函数本身返回的值，必须包括自己，剩下的，捡左右两边最大的（没有的话就都不选）。"
+
+
 ## [105. 从先序和中序遍历构造二叉树](https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description/?envType=study-plan-v2&envId=top-100-liked)
 
 <!-- 所有文件名必须是该题目的英文名 -->
