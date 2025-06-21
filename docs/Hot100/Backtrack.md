@@ -6,6 +6,54 @@ tags:
 
 # 回溯 
 
+
+
+## [39. 组合总数](https://leetcode.cn/problems/combination-sum/?envType=study-plan-v2&envId=top-100-liked)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span> 
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+给你一个 无重复元素 的整数数组 `candidates` 和一个目标整数 `target` ，找出 `candidates` 中可以使数字和为目标数 `target` 的 所有 不同组合 ，并以列表形式返回。你可以按 任意顺序 返回这些组合。
+
+`candidates` 中的 同一个 数字可以 无限制重复被选取 。如果至少一个数字的被选数量不同，则两种组合是不同的。 
+
+对于给定的输入，保证和为 `target` 的不同组合数少于 150 个。
+
+
+```python
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        res = []
+        n = len(candidates)
+        def dfs(curr, curr_list, idx):
+            if curr > target:
+                return 
+            
+            if curr == target:
+                res.append(curr_list)
+                return 
+            
+            for i in range(idx, n):
+                dfs(curr + candidates[i], curr_list + [candidates[i]], i )
+        
+        dfs(0, [], 0)
+        return res
+```
+
+!!! quote ""
+    思路就是每次放一个数字，但是要保证递归下去的时候总是从当前数字向后开始递归。
+
+
+
 ## [51. N 皇后](https://leetcode.cn/problems/n-queens/description/?envType=study-plan-v2&envId=top-100-liked)
 
 <!-- 所有文件名必须是该题目的英文名 -->
