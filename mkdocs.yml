@@ -21,6 +21,7 @@ nav:
       - 回溯: Hot100/Backtrack.md
       - 列表｜矩阵: Hot100/Array.md
       - 栈｜队列: Hot100/Stack.md
+      - 堆｜Heap: Hot100/Heap.md
       - 二分搜索: Hot100/Bin_search.md
       - DFS/BFS: Hot100/DFS_BFS.md
       - 贪心算法: Hot100/Greedy.md

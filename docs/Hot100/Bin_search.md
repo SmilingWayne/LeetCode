@@ -176,11 +176,11 @@ class Solution:
 
     ![](https://assets.leetcode-cn.com/solution-static/33/33_fig1.png)
 
-    比如，有两种划分方法：第一种是mid属于前半部分，那么，只需要判断target是否在前半部分，也就是在left, mid之间：如果在，就缩小区间到前半部分，如果不在，就缩小区间到后半部分。第二种是mid属于后半部分，那么，只需要判断target是否在后半部分，也就是 mid, right 之间。如果在，就缩小区间到后半部分，如果不在，就缩小区间到前半部分。
+    比如，有两种划分方法：第一种是，看了最左侧的和中间的，发现mid属于前半部分，那么，只需要判断target是否在前半部分，也就是在left, mid之间：如果在，就缩小区间到前半部分，如果不在，就缩小区间到后半部分。第二种是mid属于后半部分，那么，只需要判断target是否在后半部分，也就是 mid, right 之间。如果在，就缩小区间到后半部分，如果不在，就缩小区间到前半部分。
 
 ----------
 
-## [34. 在排序数组内查找元素的第一个和最后一个位置](https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/?envType=study-plan-v2&envId=top-interview-150)
+## [🌟34. 在排序数组内查找元素的第一个和最后一个位置](https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/?envType=study-plan-v2&envId=top-interview-150)
 
 <!-- 所有文件名必须是该题目的英文名 -->
 
