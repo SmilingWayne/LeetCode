@@ -250,3 +250,60 @@ class Solution:
 
 !!! quote "因为要返回字符串，所以必须找到一对上下标。同时，这个需要两层遍历，一个用来锚定“当前的最后一个字符所在位置”，一个找“前向的可能与这个字符串匹配并且中间夹着的部分都是回文”的“第一个字符”所在的位置。这里的dp表存储的是从 $i$ 到 $j$ 的字符串是否是回文串。"
 
+---
+
+
+## [152. 乘积最大子数组]()
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+给你一个整数数组 nums ，请你找出数组中乘积最大的非空连续 子数组（该子数组中至少包含一个数字），并返回该子数组所对应的乘积。
+
+测试用例的答案是一个 32-位 整数。
+
+ 
+
+示例 1:
+
+输入: `nums = [2,3,-2,4]`
+输出: `6`
+解释: 子数组 `[2,3]` 有最大乘积 `6`。
+
+
+```python
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        leftMax = 1
+        leftMin = 1
+        res = float('-inf')
+        for num in nums:
+            if num < 0:
+                leftMax, leftMin = leftMin, leftMax
+                leftMax = max(leftMax * num, num)
+                leftMin = min(leftMin * num, num)
+            else:
+                leftMax = max(leftMax * num, num)
+                leftMin = min(leftMin * num, num)
+            res = max(res, leftMax)
+        return res
+```
+
+!!! quote ""
+    数字有两种情况：非负和负数。我们记录在当前数字前面的元素构成的列表的最大的乘积 leftMax，和当前数字前面的最小的乘积 leftMin。
+    
+    1. 如果这个数字是正数，那么，截止到这个数字时的最大乘积有2种情况： （1）前面有一个大数，乘之后更大了，（2）这个正数比前面所有元素的最大乘积还要大（这可以理解，因为前面的乘积还可能是负数嘛；同理，截止到这个数字时的最小乘积有2种情况：（1）前面有一个数，乘之后更小了（比如原先是个负数），（2）这个正数比前面所有元素的最小乘积还要小（这也可以理解，因为前面的乘积还可能是正数嘛！）； 
+        1. 上面的就可以写成：leftMax = max(leftMax * num, num); leftMin = min(leftMin * num, num)
+    2. **如果这个数字是负数**，分析思路是一样的，但是要提前交换一下  leftMin, leftMax。为什么？
+        1. 因为截止到这个数字时候的最大乘积，不可能是负数乘以原先的大数字得到的（原先是 +,-，那么一定是负数乘负数得到的更大；原先是 -,-，那么一定是负得更多的那个得到的更大；原先是+，+，那一定是正得不那么多的得到的更大）；
+        2. 因为截止到这个数字时候的最小乘积，不可能是负数乘以原先的小数字得到的（原先是 +,-，那么一定是负数乘正数得到的更小；原先是 -,-，那么一定是负得更少的那个乘出来的更小；原先是+，+，那一定是正更多的那个得的得到的更小）；
+        3. 于是我们有了最开始的互换操作。

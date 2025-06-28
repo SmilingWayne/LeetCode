@@ -242,3 +242,48 @@ class Solution:
 ```
 
 !!! quote "一开始题解没看懂，实际没那么复杂...要想找到最前面的那个，无非就是正常二分搜索过程中找到了一个目标值了，但是可能前面还有。此时我们保存下当前的位置，但是调整右边的pivot，依然继续搜索，直到两个指针逼近；要想找到最后面的那个，无非是正常二分搜索过程中找到目标值了，但是可能后面还有，此时我们保存下当前的位置，但是调整左边的poivot，依然继续搜索，直到两个指针逼近"
+
+---
+
+## [287. 寻找重复数](https://leetcode.cn/problems/find-the-duplicate-number/description/?envType=study-plan-v2&envId=top-100-liked)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+给定一个包含 `n + 1` 个整数的数组 `nums` ，其数字都在 `[1, n]` 范围内（包括 `1` 和 `n`），可知至少存在一个重复的整数。
+
+假设 `nums` 只有 一个重复的整数 ，返回 这个重复的数 。
+
+你设计的解决方案必须 不修改 数组 `nums` 且只用常量级 O(1) 的额外空间。
+
+ 
+
+```python
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        n = len(nums)
+        l = 1 ; r = n - 1
+        while l <= r:
+            mid = l + (r - l ) // 2
+            cnt = 0
+            for num in nums:
+                if l <= num <= mid:
+                    cnt += 1
+            if cnt > mid - l + 1:
+                r = mid - 1
+            else:
+                l = mid + 1
+        return l
+```
+
+!!! quote ""
+    考虑到只有一个重复数字，且数字范围给定 $[1, n]$，可以用二分搜素，每次统计在 $[l, mid]$ 之间的所有数字，如果这些数字 比 mid- l + 1 还要多（因为这之间至多 $mid - l + 1$ 个数字），那么那个重复的数字一定在前半段；反之，一定在后半段。
