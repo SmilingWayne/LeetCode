@@ -253,7 +253,7 @@ class Solution:
 ---
 
 
-## [152. 乘积最大子数组]()
+## [152. 乘积最大子数组](https://leetcode.cn/problems/maximum-product-subarray/?envType=study-plan-v2&envId=top-100-liked)
 
 <!-- 所有文件名必须是该题目的英文名 -->
 
@@ -307,3 +307,50 @@ class Solution:
         1. 因为截止到这个数字时候的最大乘积，不可能是负数乘以原先的大数字得到的（原先是 +,-，那么一定是负数乘负数得到的更大；原先是 -,-，那么一定是负得更多的那个得到的更大；原先是+，+，那一定是正得不那么多的得到的更大）；
         2. 因为截止到这个数字时候的最小乘积，不可能是负数乘以原先的小数字得到的（原先是 +,-，那么一定是负数乘正数得到的更小；原先是 -,-，那么一定是负得更少的那个乘出来的更小；原先是+，+，那一定是正更多的那个得的得到的更小）；
         3. 于是我们有了最开始的互换操作。
+
+---
+
+## [300. 最长递增子序列](https://leetcode.cn/problems/longest-increasing-subsequence/submissions/640054099/?envType=study-plan-v2&envId=top-100-liked)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+给你一个整数数组 nums ，找到其中最长严格递增子序列的长度。
+
+子序列 是由数组派生而来的序列，删除（或不删除）数组中的元素而不改变其余元素的顺序。例如，[3,6,2,7] 是数组 [0,3,1,6,2,2,7] 的子序列。
+
+
+
+
+```python
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        
+        arr = []
+        for num in nums:
+            if not arr or num > arr[-1]:
+                arr.append(num)
+            else:
+                l = 0; r = len(arr) - 1
+                while l <= r:
+                    mid = l + (r - l) // 2
+                    if arr[mid] >= num:
+                        r = mid - 1
+                    else:
+                        l = mid + 1
+                arr[l] = num 
+        return len(arr)
+
+```
+
+!!! quote ""
+    始终维护一个“增长得最慢”的列表。
