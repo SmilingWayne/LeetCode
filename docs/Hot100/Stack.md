@@ -249,3 +249,60 @@ class MinStack:
 ```
 
 !!! quote "这里有一个小trick，用一个额外list记录“截止到目前最小的元素，因为无论怎么pop，总会先pop到这个最小的元素，再pop到前面的小元素。注意`push` 函数中判别的时候加上等号！"
+
+---
+
+## [32. 最长有效括号](https://leetcode.cn/problems/longest-valid-parentheses/description/?envType=study-plan-v2&envId=top-100-liked)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+给你一个只包含 '(' 和 ')' 的字符串，找出最长有效（格式正确且连续）括号子串的长度。
+
+ 
+
+示例 1：
+
+输入：s = "(()"
+输出：2
+解释：最长有效括号子串是 "()"
+
+
+```python
+from collections import deque
+class Solution:
+    def longestValidParentheses(self, s: str) -> int:
+        stack = deque([-1])
+        res = 0
+        for idx, sub_s in enumerate(s):
+            if sub_s == "(":
+                stack.append(idx)
+            else:
+                stack.pop()
+                if len(stack) == 0:
+                    stack.append(idx)
+                else:
+                    res = max(res, idx - stack[-1])
+        return res
+
+```
+
+!!! quote ""
+    每次标记“前一个导致不可行的位置，注意前面补-1；
+
+    如果遇到了一个 `(`，无脑入stack；
+
+    如果遇到了一个 `)`，默认踢掉前面一个（假设进行了匹配），这时候有一种情况是把原先队列的 -1 踢掉了，此时这个`)` 就成了前一个不可行的位置，于是自己入队；
+
+    否则，查看当前位置到前面一个不可行位置的距离。
+
+    
