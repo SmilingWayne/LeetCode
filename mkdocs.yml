@@ -45,6 +45,10 @@ theme:
     - search.share
     - navigation.top
     - navigation.indexes
+    - content.action.edit
+    - content.action.view
+    - content.code.copy
+    - content.code.select
     - media: "(prefers-color-scheme: light)"
       scheme: default
       toggle:
@@ -116,6 +120,8 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.mark
   - pymdownx.tilde
+  - pymdownx.highlight:
+      linenums: false
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.details

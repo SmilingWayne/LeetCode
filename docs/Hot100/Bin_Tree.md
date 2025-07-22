@@ -296,7 +296,7 @@ class Solution:
 
 ----
 
-## [208. 实现前缀树](https://leetcode.cn/problems/implement-trie-prefix-tree/description/?envType=study-plan-v2&envId=top-100-liked)
+## [🌟208. 实现前缀树](https://leetcode.cn/problems/implement-trie-prefix-tree/description/?envType=study-plan-v2&envId=top-100-liked)
 
 <!-- 所有文件名必须是该题目的英文名 -->
 
