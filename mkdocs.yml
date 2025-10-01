@@ -3,7 +3,9 @@ site_url: https://github.com/SmlingWayne/LeetCode
 site_description: 笑笑的题库!
 
 nav:
-  - 首页: index.md
+  - 首页:
+      - 中文: index.md
+      - 英文: index_en.md
   - 日常:
       - Daily/index.md
       - 数组: Daily/Array.md
