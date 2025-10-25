@@ -5,7 +5,7 @@ tags:
   - 前缀和
 ---
 
-# 双指针 / 滑动窗口
+# 双指针 / 滑窗 / 单调栈
 
 ## [11. 盛最多水的容器](https://leetcode.cn/problems/container-with-most-water/description/?envType=study-plan-v2&envId=top-100-liked)
 

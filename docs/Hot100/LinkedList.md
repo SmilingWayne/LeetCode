@@ -3,13 +3,48 @@ tags:
   - 链表
 ---
 
-# 链表
+# 手撕系列 I：链表
+
+
+!!! abstract ""
+    <span style="color:green;font-weight:bold">相交链表</span>
+
+    <span style="color:green;font-weight:bold">🌟🌟 反转链表</span>
+
+    <span style="color:green;font-weight:bold">回文链表</span>
+
+    <span style="color:green;font-weight:bold">环形链表 I / II  </span>
+
+    
+    <span style="color:green;font-weight:bold">合并两个有序链表</span>
+
+    <span style="color:orange;font-weight:bold">两数相加</span>
+
+    <span style="color:orange;font-weight:bold">删除链表的倒数第 N 个节点</span>
+
+    <span style="color:orange;font-weight:bold">随机链表的复制</span>
+
+    <span style="color:orange;font-weight:bold">两两交换链表</span>
+
+    <span style="color:orange;font-weight:bold">删除排序链表中的重复元素 II</span> (150)
+
+    <span style="color:orange;font-weight:bold">旋转链表 K 个位置</span> (150)
+
+    <span style="color:orange;font-weight:bold">分隔链表</span> (150)
+
+    <span style="color:orange;font-weight:bold">🌟🌟 重排链表</span> (No 100 or 150)
+
+    <span style="color:red;font-weight:bold">🌟🌟 K 个一组翻转链表</span>
+
+    <span style="color:red;font-weight:bold">LRU 缓存</span>
+    
+
 
 ## [160. 相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists/?envType=study-plan-v2&envId=top-100-liked)
 
 <!-- 所有文件名必须是该题目的英文名 -->
 
-!!! note "链表"
+!!! note ""
     <!-- 这里记载考察的数据结构、算法等 -->
     🔑🔑 难度：<span style = "color:Green; font-weight:bold">Easy 简单</span>
 
@@ -58,7 +93,7 @@ class Solution:
 
 <!-- 所有文件名必须是该题目的英文名 -->
 
-!!! note "必看经典题"
+!!! note ""
     <!-- 这里记载考察的数据结构、算法等 -->
     🔑🔑 难度：<span style = "color:Green; font-weight:bold">Easy 简单</span>
 
@@ -98,11 +133,67 @@ class Solution:
 
 ----
 
+## 234. 回文链表
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    - 🔑🔑 难度：<span style = "color:Green; font-weight:bold">Easy 简单</span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+给你一个单链表的头节点 head ，请你判断该链表是否为回文链表。如果是，返回 true ；否则，返回 false 。
+
+
+```python
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        if not head:
+            return True 
+        post = self.partition(head)    
+        post = self.reverseList(post)
+        curr = head
+        while post and curr:
+            if post.val != curr.val:
+                return False 
+            else:
+                post = post.next 
+                curr = curr.next 
+        return True
+    
+    def partition(self, head):
+        slow = head 
+        fast = head 
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next 
+        return slow 
+    
+    def reverseList(self, head):
+        prev = None 
+        curr = head 
+        while curr:
+            post = curr.next 
+            curr.next = prev 
+            prev = curr
+            curr = post 
+        return prev
+```
+
+!!! quote "思路是先从整条链表中间切开，对其中的一半做反转，然后两段链表同步前进看是否相同。"
+
+---
+
 ## [141. 环形链表](https://leetcode.cn/problems/linked-list-cycle/?envType=study-plan-v2&envId=top-100-liked)
 
 <!-- 所有文件名必须是该题目的英文名 -->
 
-!!! note "经典题！"
+!!! note ""
     <!-- 这里记载考察的数据结构、算法等 -->
     🔑🔑 难度：<span style = "color:Green; font-weight:bold">Easy 简单</span>
 
@@ -127,23 +218,18 @@ class Solution:
 ```python
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        if head == None:
-            return False
-        l = head
-        r = head
-        while r != None:
-            if r.next != None:
-                l = l.next 
-                r = r.next.next
-            else:
-                return False
-            if r == l:
-                return True
+        slow = head 
+        fast = head 
+        while fast and fast.next:
+            slow = slow.next 
+            fast = fast.next.next 
+            if slow == fast:
+                return True 
         return False
         
 ```
 
-!!! quote "注意快慢指针。一开始都从head出发，一定要注意判断 `fast.next` 是否为空！另一个值得注意的事情是，还有一种快慢指针是 fast 直接赋 `head.next`。但是这种判断在下一道题中就有所不同了。"
+!!! quote "快慢指针。fast 总比 slow 快一格。只要是环就一定会遇上，如果不是环，fast 一定会先走到头。"
 
 ---
 
@@ -152,7 +238,7 @@ class Solution:
 
 <!-- 所有文件名必须是该题目的英文名 -->
 
-!!! note "经典题！2！"
+!!! note ""
     <!-- 这里记载考察的数据结构、算法等 -->
     🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
 
@@ -178,37 +264,119 @@ class Solution:
 ![](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist.png)
 
 ```python
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
-
 class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        
-        if head == None:
-            return None
-        l = head
-        r = head
-        while r != None:
-            l = l.next
-            if r.next == None:
-                return None
-            r = r.next.next
-            if l == r:
-                tmp = head
-                while tmp != l:
-                    tmp = tmp.next
-                    l = l.next
-                return tmp
+        slow = head 
+        fast = head 
+        while fast and fast.next:
+            slow = slow.next 
+            fast = fast.next.next 
+            if slow == fast:
+                tmp = head 
+                while slow != tmp:
+                    tmp = tmp.next 
+                    slow = slow.next 
+                return tmp 
         return None
 
 ```
 
-!!! quote "记忆：相遇的时候，慢的走了 `N`,快的走了`2 * N`。只需要此时从head开始继续走一个指针，就能在相交的地方再度相聚了。"
+!!! quote "记忆：相遇的时候，慢的走了 `N`,快的走了`2 * N`。只需要此时用一临时指针temp从head开始继续走，slow 也在当前位置继续走，两个指针就能在相交的地方再度相聚了。"
 
 ----
+
+
+## [21. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists/description/?envType=study-plan-v2&envId=top-100-liked)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    - 🔑🔑 难度：<span style = "color:Green; font-weight:bold">Easy 简单</span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
+
+
+```python
+class Solution:
+    def mergeTwoLists(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        hair = ListNode(0)
+        res = hair
+        while l1 and l2:
+            if l1.val < l2.val:
+                hair.next = ListNode(l1.val)
+                l1 = l1.next 
+            else:
+                hair.next = ListNode(l2.val)
+                l2 = l2.next 
+            hair = hair.next 
+        hair.next = l1 if l1 else l2
+        return res.next
+```
+
+!!! quote "很简单，两个链表同时前进，铺铁轨一样，优先把小的接着就行。"
+
+---
+
+## [2. 两数相加](https://leetcode.cn/problems/add-two-numbers/description/?envType=study-plan-v2&envId=top-100-liked)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。
+
+请你将两个数相加，并以相同形式返回一个表示和的链表。
+
+你可以假设除了数字 0 之外，这两个数都不会以 0 开头。
+
+输入：l1 = [2,4,3], l2 = [5,6,4]
+输出：[7,0,8]
+解释：342 + 465 = 807.
+
+```python
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        hair = ListNode(0)
+        added = 0
+        res = hair
+        while l1 and l2:
+            val = l1.val + l2.val + added 
+            v, added = val % 10, val // 10
+            l1 = l1.next
+            l2 = l2.next 
+            hair.next = ListNode(v)
+            hair = hair.next    
+        temp = l1 if l1 else l2 
+        while temp:
+            val = temp.val + added 
+            v, added = val % 10, val // 10
+            hair.next = ListNode(v)
+            hair = hair.next    
+            temp = temp.next 
+        if added > 0:
+            hair.next = ListNode(added)
+        return res.next
+```
+
+!!! quote "合并有序链表的进阶版。模拟大数相加。注意总会有一个进位。这可能导致后续有1出现（比如 999 + 1）"
+
+
+---
 
 ## [🌟19. 删除链表的倒数第k个节点](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/?envType=study-plan-v2&envId=top-100-liked)
 
@@ -234,36 +402,29 @@ class Solution:
 
 
 ```python
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        result = ListNode(0)
-        result.next = head 
-        slow = head 
+        if not head:
+            return None 
+        hair = ListNode(0)
+        hair.next = head 
+        slow = hair 
         fast = head 
-        for i in range(n):
-            fast = fast.next
-            if fast == None:
-                break 
-        if fast == None:
-            return head.next 
-        
-        while fast.next != None:
-            fast = fast.next
+        for _ in range(n):
+            fast = fast.next 
+        while fast:
             slow = slow.next 
-        slow.next = slow.next.next 
-        return result.next
+            fast = fast.next 
+        if slow:
+            slow.next = slow.next.next 
+        return hair.next
 ```
 
-!!! quote "要注意，可能要删除的是第一个节点！所以分情况讨论，如果删除的是第一个节点，那么`head.next`，否则就利用快慢指针进行操作。"
+!!! quote "用快慢指针，需要虚拟节点在前面接一下。"
 
 ----
 
-## [24. 两两交换链表]()
+## [24. 两两交换链表](https://leetcode.cn/problems/swap-nodes-in-pairs/description/?envType=study-plan-v2&envId=top-100-liked)
 
 <!-- 所有文件名必须是该题目的英文名 -->
 
@@ -277,19 +438,185 @@ class Solution:
 
 <!-- 题目简介 -->
 
+给你一个链表，两两交换其中相邻的节点，并返回交换后链表的头节点。你必须在不修改节点内部的值的情况下完成本题（即，只能进行节点交换）。
 
-> 示例1:
-> 
-> 
+输入：head = [1,2,3,4]
+输出：[2,1,4,3]
+
+```python
+class Solution:
+    def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head or not head.next:
+            return head 
+        
+        hair = ListNode(0)
+        hair.next = head 
+        res = hair
+        slow = hair 
+        fast = hair 
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next 
+            if fast:
+                post = fast.next 
+                fast.next = slow 
+                slow.next = post 
+                hair.next = fast 
+                fast = slow
+                hair = slow
+        return res.next 
+
+```
+
+!!! quote "开始想觉得有些难做实际上解耦成一个又一个的slow- fast - hair - next 的解耦，分别进行衔接。需要 slow / fast / hair/ head。"
+
+---
+
+## [82. 删除排序链表中的重复元素 II](https://leetcode.cn/problems/remove-duplicates-from-sorted-list-ii/description/?envType=study-plan-v2&envId=top-interview-150)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+给定一个已排序的链表的头 head ， 删除原始链表中所有重复数字的节点，只留下不同的数字 。返回 已排序的链表 。
+
+输入：head = [1,2,3,3,4,4,5]
+输出：[1,2,5]
+
+```python
+class Solution:
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        dummy = ListNode(0)
+        dummy.next = head 
+        hair = dummy 
+        curr = head 
+        while curr:
+            if not curr.next:
+                break 
+            nxt = curr.next 
+            isdup = False
+            if nxt and nxt.val == curr.val:
+                isdup = True 
+                while nxt and nxt.val == curr.val:
+                    nxt = nxt.next
+            if isdup:
+                hair.next = nxt 
+                curr = nxt
+            else:
+                hair = hair.next
+                curr = curr.next
+        return dummy.next
+```
+
+!!! quote ""
+
+---
+
+## [旋转链表 K 个位置](https://leetcode.cn/problems/rotate-list/description/?envType=study-plan-v2&envId=top-interview-150)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+给你一个链表的头节点 head ，旋转链表，将链表每个节点向右移动 k 个位置。
+
 
 
 ```python
+class Solution:
+    def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        if not head or not head.next:
+            return head 
+        cnt = 0
+        temp = head 
+        while temp is not None:
+            cnt += 1
+            temp = temp.next 
+        k = k % cnt 
+        if k == 0:
+            return head
+        dummy = ListNode(0)
+        dummy.next = head 
+        fast = head 
+        for i in range(k):
+            fast = fast.next 
+        slow = dummy 
+        while fast is not None:
+            fast = fast.next 
+            slow = slow.next 
+        prev = slow.next 
+        slow.next = None
+        dummy.next = prev 
+        while prev and prev.next:
+            prev = prev.next 
+        prev.next = head 
+        return dummy.next
 
 ```
 
 !!! quote ""
 
 
+---
+
+## [86. 分隔链表]()
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+给你一个链表的头节点 head 和一个特定值 x ，请你对链表进行分隔，使得所有 小于 x 的节点都出现在 大于或等于 x 的节点之前。
+
+你应当 保留 两个分区中每个节点的初始相对位置。
+
+```python
+class Solution:
+    def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
+        post = ListNode(0)
+        l1 = post
+        prev = ListNode(0)
+        l2 = prev
+        temp = head 
+        while temp:
+            if temp.val < x:
+                prev.next = ListNode(temp.val)
+                prev = prev.next 
+            else:
+                post.next = ListNode(temp.val)
+                post = post.next 
+            temp = temp.next 
+        prev.next = l1.next 
+        return l2.next
+```
+
+!!! quote ""
+
+
+---
 
 ## [🌟25. K 个一组翻转链表](https://leetcode.cn/problems/reverse-nodes-in-k-group/description/?envType=study-plan-v2&envId=top-100-liked)
 
@@ -297,7 +624,7 @@ class Solution:
 
 !!! note "链表中的困难题"
     <!-- 这里记载考察的数据结构、算法等 -->
-    🔑🔑 难度： <span style = "color:crisma; font-weight:bold">High 困难</span>
+    🔑🔑 难度： <span style = "color:red; font-weight:bold">High 困难</span>
 
 <!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
 <!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
@@ -417,6 +744,120 @@ class Solution:
     
     在链表相关操作里，判断两个节点是否相等，通常就是判断它们是否为同一个节点，也就是是否指向内存中的同一个对象。在 Python 里，使用 == 来比较两个节点时，比较的是它们的引用（即内存地址）。如果两个节点变量指向内存中同一个节点对象，那么它们是相等的；反之则不相等。
 
+---
+
+## [143. 重排链表](https://leetcode.cn/problems/reorder-list/description/)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+
+给定一个单链表 L 的头节点 head ，单链表 L 表示为：
+
+L0 → L1 → … → Ln-1 → Ln 
+请将其重新排列后变为：
+
+L0 → Ln → L1 → Ln-1 → L2 → Ln-2 → …
+
+不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
+
+输入: head = [1,2,3,4,5]
+输出: [1,5,2,4,3]
+
+```python
+class Solution:
+    def reorderList(self, head: ListNode) -> None:
+        """
+        Do not return anything, modify head in-place instead.
+        """
+        n = 0
+        cur = head
+        while cur:
+            n += 1
+            cur = cur.next
+        mid = (n + 1) // 2
+        mid_node = head
+        for _ in range(mid - 1):
+            mid_node = mid_node.next
+        
+        reservsed_head = mid_node.next
+        mid_node.next = None
+        cur = reservsed_head
+        while cur and cur.next:
+            nxt = cur.next
+            cur.next = nxt.next
+            nxt.next = reservsed_head
+            reservsed_head = nxt
+
+        cur = head
+        while reservsed_head:
+            next = cur.next
+            cur.next = reservsed_head
+            rn = reservsed_head.next
+            reservsed_head.next = next
+            reservsed_head = rn
+            cur = next
+
+```
+
+!!! quote "依然是老套路，拆分、反转、重排。"
+
+
+---
+
+
+## [138. 随机链表的复制](https://leetcode.cn/problems/copy-list-with-random-pointer/?envType=study-plan-v2&envId=top-100-liked)
+
+<!-- 所有文件名必须是该题目的英文名 -->
+
+!!! note ""
+    <!-- 这里记载考察的数据结构、算法等 -->
+    - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+
+<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
+<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
+<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
+
+<!-- 题目简介 -->
+
+构造这个链表的 深拷贝。 深拷贝应该正好由 n 个 全新 节点组成，其中每个新节点的值都设为其对应的原节点的值。新节点的 next 指针和 random 指针也都应指向复制链表中的新节点，并使原链表和复制链表中的这些指针能够表示相同的链表状态。复制链表中的指针都不应指向原链表中的节点 。
+
+
+
+
+```python
+class Solution:
+    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        if not head:
+            return None 
+        
+        dic = dict()
+        tmp = head 
+        while tmp:
+            dic[tmp] = Node(tmp.val)
+            tmp = tmp.next 
+        tmp = head 
+        while tmp:
+            dic.get(tmp).next = dic.get(tmp.next)
+            dic.get(tmp).random = dic.get(tmp.random)
+            tmp = tmp.next 
+        return dic.get(head)
+        
+```
+
+!!! quote "看起来困难做起来没那么困难系列，字典存，然后走2次遍历。"
+
+
+---
 
 ## [146. LRU缓存](https://leetcode.cn/problems/lru-cache/description/)
 
