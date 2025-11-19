@@ -3,7 +3,7 @@ tags:
   - 链表
 ---
 
-# 手撕系列 I：链表
+# 勇闯秋招手撕系列 I：链表
 
 
 !!! abstract ""
@@ -39,26 +39,13 @@ tags:
     <span style="color:red;font-weight:bold">LRU 缓存</span>
     
 
+<br>
 
 ## [160. 相交链表](https://leetcode.cn/problems/intersection-of-two-linked-lists/?envType=study-plan-v2&envId=top-100-liked)
 
-<!-- 所有文件名必须是该题目的英文名 -->
 
-!!! note ""
-    <!-- 这里记载考察的数据结构、算法等 -->
-    🔑🔑 难度：<span style = "color:Green; font-weight:bold">Easy 简单</span>
-
-<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
-<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
-<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
-
-<!-- 题目简介 -->
-
-
-> 示例1:
+> 难度：<span style = "color:Green; font-weight:bold">Easy 简单</span>
 > 给你两个单链表的头节点 headA 和 headB ，请你找出并返回两个单链表相交的起始节点。如果两个链表不存在相交节点，返回 null 。
-> 
-> 图示两个链表在节点 c1 开始相交：
 >
 > ![](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/14/160_statement.png)
 
@@ -97,9 +84,6 @@ class Solution:
     <!-- 这里记载考察的数据结构、算法等 -->
     🔑🔑 难度：<span style = "color:Green; font-weight:bold">Easy 简单</span>
 
-<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
-<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
-<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
 
 <!-- 题目简介 -->
 
@@ -135,19 +119,9 @@ class Solution:
 
 ## 234. 回文链表
 
-<!-- 所有文件名必须是该题目的英文名 -->
-
-!!! note ""
-    <!-- 这里记载考察的数据结构、算法等 -->
-    - 🔑🔑 难度：<span style = "color:Green; font-weight:bold">Easy 简单</span>
-
-<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
-<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
-<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
-
 <!-- 题目简介 -->
 
-给你一个单链表的头节点 head ，请你判断该链表是否为回文链表。如果是，返回 true ；否则，返回 false 。
+<span style = "color:Green; font-weight:bold">Easy 简单</span>。给你一个单链表的头节点 head ，请你判断该链表是否为回文链表。如果是，返回 true ；否则，返回 false 。
 
 
 ```python
@@ -165,7 +139,6 @@ class Solution:
                 post = post.next 
                 curr = curr.next 
         return True
-    
     def partition(self, head):
         slow = head 
         fast = head 
@@ -173,7 +146,6 @@ class Solution:
             slow = slow.next
             fast = fast.next.next 
         return slow 
-    
     def reverseList(self, head):
         prev = None 
         curr = head 
@@ -197,22 +169,15 @@ class Solution:
     <!-- 这里记载考察的数据结构、算法等 -->
     🔑🔑 难度：<span style = "color:Green; font-weight:bold">Easy 简单</span>
 
-<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
-<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
-<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
 
 <!-- 题目简介 -->
 
 
 > 示例1:
-> 给你一个链表的头节点 `head` ，判断链表中是否有环。
+> 给你一个链表的头节点 `head` ，判断链表中是否有环。如果链表中存在环 ，则返回 `true` 。 否则，返回 `false` 。
 > 
-> 如果链表中有某个节点，可以通过连续跟踪 `next` 指针再次到达，则链表中存在环。 为了表示给定链表中的环，评测系统内部使用整数 `pos` 来表示链表尾连接到链表中的位置（索引从 0 开始）。注意：`pos` 不作为参数进行传递 。仅仅是为了标识链表的实际情况。
 
 ![](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist.png)
-
-> 如果链表中存在环 ，则返回 `true` 。 否则，返回 `false` 。
-> 
 
 
 ```python
@@ -236,30 +201,11 @@ class Solution:
 
 ## [142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/description/?envType=study-plan-v2&envId=top-100-liked)
 
-<!-- 所有文件名必须是该题目的英文名 -->
+难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>；给定一个链表的头节点  `head` ，返回链表开始入环的第一个节点。 如果链表无环，则返回 `null`。
 
-!!! note ""
-    <!-- 这里记载考察的数据结构、算法等 -->
-    🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+不允许修改链表。
 
-<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
-<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
-<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
-
-<!-- 题目简介 -->
-
-> 示例1:
-> 给定一个链表的头节点  `head` ，返回链表开始入环的第一个节点。 如果链表无环，则返回 `null`。
-> 
-> 如果链表中有某个节点，可以通过连续跟踪 `next` 指针再次到达，则链表中存在环。 为了表示给定链表中的环，评测系统内部使用整数 `pos` 来表示链表尾连接到链表中的位置（索引从 0 开始）。如果 `pos` 是 -1，则在该链表中没有环。注意：`pos` 不作为参数进行传递，仅仅是为了标识链表的实际情况。
-> 
-> 不允许修改链表。
-> 
-> 输入：`head = [3,2,0,-4]`, `pos = 1`
-> 
-> 输出：返回索引为 1 的链表节点
-> 
-> 解释：链表中有一个环，其尾部连接到第二个节点。
+输入：`head = [3,2,0,-4]`, 输出`pos = 1`；返回索引为 1 的链表节点
 
 ![](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/07/circularlinkedlist.png)
 
@@ -294,9 +240,6 @@ class Solution:
     <!-- 这里记载考察的数据结构、算法等 -->
     - 🔑🔑 难度：<span style = "color:Green; font-weight:bold">Easy 简单</span>
 
-<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
-<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
-<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
 
 <!-- 题目简介 -->
 
@@ -322,23 +265,17 @@ class Solution:
 
 !!! quote "很简单，两个链表同时前进，铺铁轨一样，优先把小的接着就行。"
 
+<br>
+<br>
+<br>
+<br>
+<br>
 ---
 
 ## [2. 两数相加](https://leetcode.cn/problems/add-two-numbers/description/?envType=study-plan-v2&envId=top-100-liked)
 
-<!-- 所有文件名必须是该题目的英文名 -->
 
-!!! note ""
-    <!-- 这里记载考察的数据结构、算法等 -->
-    - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
-
-<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
-<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
-<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
-
-<!-- 题目简介 -->
-
-给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。
+难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>；给你两个 非空 的链表，表示两个非负的整数。它们每位数字都是按照 逆序 的方式存储的，并且每个节点只能存储 一位 数字。
 
 请你将两个数相加，并以相同形式返回一个表示和的链表。
 
@@ -380,25 +317,11 @@ class Solution:
 
 ## [🌟19. 删除链表的倒数第k个节点](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/?envType=study-plan-v2&envId=top-100-liked)
 
-<!-- 所有文件名必须是该题目的英文名 -->
-
-!!! note ""
-    <!-- 这里记载考察的数据结构、算法等 -->
-    🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
-
-<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
-<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
-<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
-
-<!-- 题目简介 -->
-
-
 > 示例1:
 > ![](https://assets.leetcode.com/uploads/2020/10/03/remove_ex1.jpg)
 >
-> 给你一个链表，删除链表的倒数第 `n` 个结点，并且返回链表的头结点。
->
-> 
+
+难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>；给你一个链表，删除链表的倒数第 `n` 个结点，并且返回链表的头结点。
 
 
 ```python
@@ -426,15 +349,7 @@ class Solution:
 
 ## [24. 两两交换链表](https://leetcode.cn/problems/swap-nodes-in-pairs/description/?envType=study-plan-v2&envId=top-100-liked)
 
-<!-- 所有文件名必须是该题目的英文名 -->
 
-!!! note ""
-    <!-- 这里记载考察的数据结构、算法等 -->
-    - 🔑🔑 难度：
-
-<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
-<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
-<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
 
 <!-- 题目简介 -->
 
@@ -468,7 +383,7 @@ class Solution:
 
 ```
 
-!!! quote "开始想觉得有些难做实际上解耦成一个又一个的slow- fast - hair - next 的解耦，分别进行衔接。需要 slow / fast / hair/ head。"
+!!! quote "开始想觉得有些难做实际上解耦成一个又一个的slow- fast - hair - next 的子链表，分别进行衔接。需要 slow / fast / hair/ head。"
 
 ---
 
@@ -480,9 +395,6 @@ class Solution:
     <!-- 这里记载考察的数据结构、算法等 -->
     - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
 
-<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
-<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
-<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
 
 <!-- 题目简介 -->
 
@@ -528,9 +440,6 @@ class Solution:
     <!-- 这里记载考察的数据结构、算法等 -->
     - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
 
-<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
-<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
-<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
 
 <!-- 题目简介 -->
 
@@ -583,9 +492,6 @@ class Solution:
     <!-- 这里记载考察的数据结构、算法等 -->
     - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
 
-<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
-<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
-<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
 
 <!-- 题目简介 -->
 
@@ -613,47 +519,23 @@ class Solution:
         return l2.next
 ```
 
-!!! quote ""
+<br>
+<br>
+<br>
+<br>
 
 
 ---
 
 ## [🌟25. K 个一组翻转链表](https://leetcode.cn/problems/reverse-nodes-in-k-group/description/?envType=study-plan-v2&envId=top-100-liked)
 
-<!-- 所有文件名必须是该题目的英文名 -->
+难度： <span style = "color:red; font-weight:bold">High 困难</span> ; 给你链表的头节点 `head` ，每 `k` 个节点一组进行翻转，返回修改后的链表。`k` 是一个正整数，它的值小于或等于链表的长度。如果节点总数不是 `k` 的整数倍，那么请将最后剩余的节点保持原有顺序。你不能只是单纯的改变节点内部的值，而是需要实际进行节点交换。
 
-!!! note "链表中的困难题"
-    <!-- 这里记载考察的数据结构、算法等 -->
-    🔑🔑 难度： <span style = "color:red; font-weight:bold">High 困难</span>
-
-<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
-<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
-<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
-
-<!-- 题目简介 -->
-
-
-
-> 示例1:
-> 给你链表的头节点 `head` ，每 `k` 个节点一组进行翻转，请你返回修改后的链表。
-> 
-> `k` 是一个正整数，它的值小于或等于链表的长度。如果节点总数不是 `k` 的整数倍，那么请将最后剩余的节点保持原有顺序。
-> 
-> 你不能只是单纯的改变节点内部的值，而是需要实际进行节点交换。
-
-
-> 
 
 
 ```python
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
 class Solution:
     def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
-
         hair = ListNode(0)
         hair.next = head 
         pre = hair 
@@ -671,8 +553,6 @@ class Solution:
             head = tail.next 
         return hair.next
 
-
-        
     def reverseSub(self, head, tail):
         prev = tail.next 
         curr = head 
@@ -686,7 +566,7 @@ class Solution:
 
 ```
 
-!!! quote "首先，这一题，有两个比较坑的，第一个就是需要加Dummy Node，不然转的时候很麻烦。第二个就是，我们要对原来的链表，在给定head和tail的情况下进行旋转。所以和最基础的反转链表题有不同。我们的prev一开始不再是None了，而是tail后续的节点，我们的终止条件也变成了`prev != tail`，解释起来见下："
+!!! quote "1）需要加Dummy Node，不然转的时候很麻烦；2）我们要对原来的链表，在给定head和tail的情况下进行旋转。"
 
 
     ```python
@@ -748,37 +628,15 @@ class Solution:
 
 ## [143. 重排链表](https://leetcode.cn/problems/reorder-list/description/)
 
-<!-- 所有文件名必须是该题目的英文名 -->
+难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>；给定一个单链表 L 的头节点 head ，单链表 L 表示为：
 
-!!! note ""
-    <!-- 这里记载考察的数据结构、算法等 -->
-    - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
+L0 → L1 → … → Ln-1 → Ln ；重排后为：L0 → Ln → L1 → Ln-1 → L2 → Ln-2 → …
 
-<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
-<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
-<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
-
-<!-- 题目简介 -->
-
-
-给定一个单链表 L 的头节点 head ，单链表 L 表示为：
-
-L0 → L1 → … → Ln-1 → Ln 
-请将其重新排列后变为：
-
-L0 → Ln → L1 → Ln-1 → L2 → Ln-2 → …
-
-不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
-
-输入: head = [1,2,3,4,5]
-输出: [1,5,2,4,3]
+不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。输入: head = [1,2,3,4,5]；输出: [1,5,2,4,3]
 
 ```python
 class Solution:
-    def reorderList(self, head: ListNode) -> None:
-        """
-        Do not return anything, modify head in-place instead.
-        """
+    def reorderList(self, head: ListNode) -> None: # in-place reverse
         n = 0
         cur = head
         while cur:
@@ -797,7 +655,6 @@ class Solution:
             cur.next = nxt.next
             nxt.next = reservsed_head
             reservsed_head = nxt
-
         cur = head
         while reservsed_head:
             next = cur.next
@@ -823,9 +680,6 @@ class Solution:
     <!-- 这里记载考察的数据结构、算法等 -->
     - 🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
 
-<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
-<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
-<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
 
 <!-- 题目简介 -->
 
@@ -856,6 +710,10 @@ class Solution:
 
 !!! quote "看起来困难做起来没那么困难系列，字典存，然后走2次遍历。"
 
+<br>
+<br>
+<br>
+
 
 ---
 
@@ -867,27 +725,27 @@ class Solution:
     <!-- 这里记载考察的数据结构、算法等 -->
     🔑🔑 难度：<span style = "color:gold; font-weight:bold">Medium 中等 </span>
 
-<!-- <span style = "color:gold; font-weight:bold">Medium 中等 </span> 中等 -->
-<!-- <span style = "color:crisma; font-weight:bold">High 困难</span> 困难 -->
-<!-- <span style = "color:Green; font-weight:bold">Easy 简单</span> 简单 -->
 
 <!-- 题目简介 -->
 
 请你设计并实现一个满足  LRU (最近最少使用) 缓存 约束的数据结构。
-实现 LRUCache 类：
-LRUCache(int capacity) 以 正整数 作为容量 capacity 初始化 LRU 缓存
-int get(int key) 如果关键字 key 存在于缓存中，则返回关键字的值，否则返回 -1 。
-void put(int key, int value) 如果关键字 key 已经存在，则变更其数据值 value ；如果不存在，则向缓存中插入该组 key-value 。如果插入操作导致关键字数量超过 capacity ，则应该 逐出 最久未使用的关键字。
-函数 get 和 put 必须以 O(1) 的平均时间复杂度运行。
 
- 
+实现 LRUCache 类：
+
+LRUCache(int capacity) 以 正整数 作为容量 capacity 初始化 LRU 缓存
+
+int get(int key) 如果关键字 key 存在于缓存中，则返回关键字的值，否则返回 -1 。
+
+void put(int key, int value) 如果关键字 key 已经存在，则变更其数据值 value ；如果不存在，则向缓存中插入该组 key-value 。如果插入操作导致关键字数量超过 capacity ，则应该 逐出 最久未使用的关键字。
+
+函数 get 和 put 必须以 O(1) 的平均时间复杂度运行。
 
 示例：
 
 > 输入
 > 
 > ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
-> [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+> $[[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]$
 
 > [null, null, null, 1, null, -1, null, -1, 3, 4]
 
@@ -900,7 +758,6 @@ class DLinkedNdode:
         self.next = None 
 
 class LRUCache:
-
     def __init__(self, capacity: int):
         self.cache = dict()
         self.head = DLinkedNdode()
@@ -911,13 +768,11 @@ class LRUCache:
         self.size = 0
 
     def get(self, key: int) -> int:
-        
         if key not in self.cache:
             return -1
         node = self.cache[key]
         self.moveToHead(node)
         return node.value
-
     def put(self, key: int, value: int) -> None:
         if key not in self.cache:
             node = DLinkedNdode(key, value)
@@ -933,8 +788,6 @@ class LRUCache:
             node.value = value 
             self.moveToHead(node)
 
-
-        
     def addToHead(self, node):
         node.prev = self.head 
         node.next = self.head.next 

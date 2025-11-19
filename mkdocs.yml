@@ -6,28 +6,26 @@ nav:
   - 首页:
       - 中文: index.md
       - 英文: index_en.md
-  - 日常:
-      - Daily/index.md
-      - 数组: Daily/Array.md
   #     - 测试新统计指标: Daily/Test2.md
   # - 第二部分:
   #     - Part2/index.md
   - 面试题:
       - 回溯: Interview/Interview1.md
-  - 100题&面试150题:
-      - 综合与记不得的: Hot100/Appendix.md
-      - 二叉树: Hot100/Bin_Tree.md
-      - 双指针｜滑动窗口: Hot100/Two_Pointer_sliding_window.md
-      - 动态规划: Hot100/DP.md
-      - 链表: Hot100/LinkedList.md
-      - 回溯: Hot100/Backtrack.md
-      - 列表｜矩阵: Hot100/Array.md
-      - 栈｜队列: Hot100/Stack.md
-      - 堆｜Heap: Hot100/Heap.md
-      - 二分搜索: Hot100/Bin_search.md
-      - DFS/BFS: Hot100/DFS_BFS.md
-      - 贪心算法: Hot100/Greedy.md
-      - 哈希: Hot100/Hash.md
+  - 秋招手撕复盘:
+      - 链表: Review/LinkedList.md
+      - 双指针: Review/Double_pointer.md
+      - 滑动窗口/子串: Review/Sliding_window.md
+      - 二叉树: Review/Bin_Tree.md
+      - 动态规划: Review/DP.md
+      - 链表: Review/LinkedList.md
+      - 回溯: Review/Backtrack.md
+      - 列表｜矩阵: Review/Array.md
+      - 栈｜队列: Review/Stack.md
+      - 堆｜Heap: Review/Heap.md
+      - 二分搜索: Review/Bin_search.md
+      - DFS/BFS: Review/DFS_BFS.md
+      - 贪心算法: Review/Greedy.md
+      - 哈希: Review/Hash.md
 
 docs_dir: docs/
 
