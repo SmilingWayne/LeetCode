@@ -16,7 +16,8 @@ nav:
       - 双指针: Review/Double_pointer.md
       - 滑动窗口/子串: Review/Sliding_window.md
       - 二叉树: Review/Bin_Tree.md
-      - 动态规划: Review/DP.md
+      - 动态规划｜1️⃣: Review/DP_1.md
+      - 动态规划｜2️⃣: Review/DP_2.md
       - 链表: Review/LinkedList.md
       - 回溯: Review/Backtrack.md
       - 列表｜矩阵: Review/Array.md
