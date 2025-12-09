@@ -19,7 +19,7 @@
 
     <span style="color:orange;font-weight:bold">打家劫舍系列</span>
 
-
+![](https://cdn.jsdelivr.net/gh/SmilingWayne/picsrepo/202512091611508.png)
 
 ## [322.零钱兑换🌟](https://leetcode.cn/problems/coin-change/description/?envType=study-plan-v2&envId=top-100-liked)
 
