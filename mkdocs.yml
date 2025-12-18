@@ -21,7 +21,7 @@ nav:
       - 链表: Review/LinkedList.md
       - 回溯: Review/Backtrack.md
       - 列表｜矩阵: Review/Array.md
-      - 栈｜队列: Review/Stack.md
+      - 栈｜队列: Review/Basic_data_structure.md
       - 堆｜Heap: Review/Heap.md
       - 二分搜索: Review/Bin_search.md
       - DFS/BFS: Review/DFS_BFS.md
