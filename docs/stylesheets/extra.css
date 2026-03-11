@@ -25,9 +25,9 @@
 
 /* website standard */
 
-.md-typeset .admonition,
-.md-typeset details {
-    font-size: 15px
+.md-typeset td,
+.md-typeset th {
+    font-size: 16px;
 }
 
 .md-grid {
